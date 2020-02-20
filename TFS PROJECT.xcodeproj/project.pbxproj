@@ -14,6 +14,8 @@
 		597FBF8F23FB214D00314FF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597FBF8D23FB214D00314FF2 /* LaunchScreen.storyboard */; };
 		597FBF9D23FB283100314FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 597FBF9C23FB283100314FF2 /* Assets.xcassets */; };
 		597FBF9F23FB316900314FF2 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 597FBF9E23FB316900314FF2 /* Debug.xcconfig */; };
+		59B7069123FF213700E510FE /* default-avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 59B7069023FF213700E510FE /* default-avatar.png */; };
+		59B7069323FF24DC00E510FE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B7069223FF24DC00E510FE /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		597FBF9C23FB283100314FF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		597FBF9E23FB316900314FF2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		597FBFA023FB32F500314FF2 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		59B7069023FF213700E510FE /* default-avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "default-avatar.png"; path = "Assets.xcassets/default-avatar.png"; sourceTree = "<group>"; };
+		59B7069223FF24DC00E510FE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +50,7 @@
 				597FBF9E23FB316900314FF2 /* Debug.xcconfig */,
 				597FBFA023FB32F500314FF2 /* Release.xcconfig */,
 				597FBF9C23FB283100314FF2 /* Assets.xcassets */,
+				59B7069023FF213700E510FE /* default-avatar.png */,
 				597FBF8123FB214800314FF2 /* TFS PROJECT */,
 				597FBF8023FB214800314FF2 /* Products */,
 			);
@@ -65,6 +70,7 @@
 				597FBF8223FB214800314FF2 /* AppDelegate.swift */,
 				597FBF8423FB214800314FF2 /* SceneDelegate.swift */,
 				597FBF8623FB214800314FF2 /* ViewController.swift */,
+				59B7069223FF24DC00E510FE /* ProfileViewController.swift */,
 				597FBF8823FB214900314FF2 /* Main.storyboard */,
 				597FBF8D23FB214D00314FF2 /* LaunchScreen.storyboard */,
 				597FBF9023FB214D00314FF2 /* Info.plist */,
@@ -130,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59B7069123FF213700E510FE /* default-avatar.png in Resources */,
 				597FBF8F23FB214D00314FF2 /* LaunchScreen.storyboard in Resources */,
 				597FBF9D23FB283100314FF2 /* Assets.xcassets in Resources */,
 				597FBF9F23FB316900314FF2 /* Debug.xcconfig in Resources */,
@@ -146,6 +153,7 @@
 			files = (
 				597FBF8723FB214800314FF2 /* ViewController.swift in Sources */,
 				597FBF8323FB214800314FF2 /* AppDelegate.swift in Sources */,
+				59B7069323FF24DC00E510FE /* ProfileViewController.swift in Sources */,
 				597FBF8523FB214800314FF2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
