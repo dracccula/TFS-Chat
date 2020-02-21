@@ -9,14 +9,14 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var avatarButton: UIButton!
+    @IBOutlet weak var profileButton: UIButton!
     @IBAction func clickAvatarButton(_ sender: Any) {
         openProfileView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        avatarButton.makeRounded()
+        profileButton.makeRounded()
     }
     
     func openProfileView() {

@@ -10,8 +10,30 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    @IBAction func close(_ sender: Any) {
+    
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBAction func changeProfileImageButtonAction(_ sender: Any) {
+    }
+    @IBOutlet weak var changeProfileImageButton: UIButton!
+    @IBAction func closeAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        profileImage.makeRounded()
+        changeProfileImageButton.layer.cornerRadius =  changeProfileImageButton.frame.height / 2
+    }
+}
+
+extension UIImageView {
+    func makeRounded() {
+        self.layer.borderWidth = 0
+        self.layer.masksToBounds = false
+        self.layer.borderColor = UIColor.gray.cgColor
+        self.layer.cornerRadius = 40
+        self.clipsToBounds = true
     }
 }
 
