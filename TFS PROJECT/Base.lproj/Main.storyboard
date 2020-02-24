@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" userLabel="Main View Controller" customClass="ViewController" customModule="TFS_PROJECT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsl-K9-6TB">
-                                <rect key="frame" x="358" y="60" width="40" height="40"/>
+                                <rect key="frame" x="264" y="16" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="vta-Ij-JMJ"/>
                                     <constraint firstAttribute="height" constant="40" id="xDe-Eg-9Oa"/>
@@ -49,11 +49,11 @@
             <objects>
                 <viewController id="OF5-0P-Aci" userLabel="Profile View Controller" customClass="ProfileViewController" customModule="TFS_PROJECT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Z8-7y-X6L">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4PR-6c-Ksa" userLabel="Conrols View">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="46"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uue-2J-k6S">
                                         <rect key="frame" x="8" y="8" width="39" height="30"/>
@@ -64,7 +64,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrP-P6-O4o">
-                                        <rect key="frame" x="371" y="8" width="35" height="30"/>
+                                        <rect key="frame" x="277" y="8" width="35" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <state key="normal" title="Save"/>
                                     </button>
@@ -80,74 +80,105 @@
                                     <constraint firstAttribute="bottom" secondItem="lrP-P6-O4o" secondAttribute="bottom" constant="8" id="zPX-ZW-uhQ"/>
                                 </constraints>
                             </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tFU-kA-ONE" userLabel="Profile Image View">
-                                <rect key="frame" x="16" y="46" width="382" height="382"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZl-yi-psZ">
+                                <rect key="frame" x="0.0" y="46" width="320" height="494"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-user.png" translatesAutoresizingMaskIntoConstraints="NO" id="yUc-dw-Bw5">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="382"/>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LIA-xF-whk">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="494"/>
+                                        <subviews>
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WiG-9T-B9C" userLabel="Profile Image View">
+                                                <rect key="frame" x="16" y="0.0" width="288" height="288"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-user.png" translatesAutoresizingMaskIntoConstraints="NO" id="mbi-wh-4Fm">
+                                                        <rect key="frame" x="0.0" y="0.0" width="288" height="288"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="mbi-wh-4Fm" secondAttribute="height" multiplier="1:1" id="AiC-eY-h2O"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiM-Sa-hkn">
+                                                        <rect key="frame" x="208" y="208" width="80" height="80"/>
+                                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="80" id="sht-Db-obX"/>
+                                                            <constraint firstAttribute="width" constant="80" id="y8n-r1-Yi1"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                                        <state key="normal" image="slr-camera-2-xxl.png"/>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="mbi-wh-4Fm" secondAttribute="bottom" id="Crj-vj-rGZ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="SiM-Sa-hkn" secondAttribute="trailing" id="Nhe-Kw-OGq"/>
+                                                    <constraint firstItem="mbi-wh-4Fm" firstAttribute="height" secondItem="WiG-9T-B9C" secondAttribute="height" id="WU1-bl-onM"/>
+                                                    <constraint firstAttribute="bottom" secondItem="SiM-Sa-hkn" secondAttribute="bottom" id="cky-OL-bDq"/>
+                                                    <constraint firstItem="mbi-wh-4Fm" firstAttribute="width" secondItem="WiG-9T-B9C" secondAttribute="width" id="eLG-gP-j8G"/>
+                                                    <constraint firstItem="mbi-wh-4Fm" firstAttribute="leading" secondItem="WiG-9T-B9C" secondAttribute="leading" id="hEd-lR-ls9"/>
+                                                    <constraint firstAttribute="trailing" secondItem="mbi-wh-4Fm" secondAttribute="trailing" id="lab-AC-Hs3"/>
+                                                    <constraint firstItem="mbi-wh-4Fm" firstAttribute="top" secondItem="WiG-9T-B9C" secondAttribute="top" id="ppe-EG-WJB"/>
+                                                </constraints>
+                                            </view>
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rBK-Pz-lFO" userLabel="Profile Info View">
+                                                <rect key="frame" x="16" y="288" width="288" height="174"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Владислав Киреев" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIw-0r-zLP">
+                                                        <rect key="frame" x="0.0" y="8" width="223.5" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-Wu-gOl">
+                                                        <rect key="frame" x="0.0" y="46" width="288" height="690"/>
+                                                        <mutableString key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</mutableString>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="TWt-Wu-gOl" firstAttribute="top" secondItem="zIw-0r-zLP" secondAttribute="bottom" constant="8" id="GxF-fk-ezw"/>
+                                                    <constraint firstItem="TWt-Wu-gOl" firstAttribute="leading" secondItem="rBK-Pz-lFO" secondAttribute="leading" id="H7L-p9-PV3"/>
+                                                    <constraint firstItem="zIw-0r-zLP" firstAttribute="leading" secondItem="rBK-Pz-lFO" secondAttribute="leading" id="Tzo-Py-ZS7"/>
+                                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TWt-Wu-gOl" secondAttribute="bottom" constant="8" id="f9G-rd-5Re"/>
+                                                    <constraint firstAttribute="trailing" secondItem="TWt-Wu-gOl" secondAttribute="trailing" id="hff-bx-Ibp"/>
+                                                    <constraint firstItem="zIw-0r-zLP" firstAttribute="top" secondItem="rBK-Pz-lFO" secondAttribute="top" constant="8" id="sHe-Zt-RBK"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zIw-0r-zLP" secondAttribute="trailing" constant="20" symbolic="YES" id="utf-Ui-HhL"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="yUc-dw-Bw5" secondAttribute="height" multiplier="1:1" id="XiE-Ge-wUF"/>
+                                            <constraint firstItem="WiG-9T-B9C" firstAttribute="top" secondItem="LIA-xF-whk" secondAttribute="top" id="EUX-Et-hZG"/>
+                                            <constraint firstAttribute="trailing" secondItem="WiG-9T-B9C" secondAttribute="trailing" constant="16" id="QVp-88-k7y"/>
+                                            <constraint firstItem="rBK-Pz-lFO" firstAttribute="leading" secondItem="LIA-xF-whk" secondAttribute="leading" constant="16" id="RfY-Nh-abl"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rBK-Pz-lFO" secondAttribute="bottom" constant="32" id="S89-PN-bC1"/>
+                                            <constraint firstItem="rBK-Pz-lFO" firstAttribute="top" secondItem="WiG-9T-B9C" secondAttribute="bottom" id="bhq-4C-Ogo"/>
+                                            <constraint firstAttribute="trailing" secondItem="rBK-Pz-lFO" secondAttribute="trailing" constant="16" id="e7X-uy-IDD"/>
+                                            <constraint firstItem="WiG-9T-B9C" firstAttribute="leading" secondItem="LIA-xF-whk" secondAttribute="leading" constant="16" id="irH-vW-zpO"/>
                                         </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RhY-Gt-KQr">
-                                        <rect key="frame" x="302" y="302" width="80" height="80"/>
-                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="5xW-IX-CWs"/>
-                                            <constraint firstAttribute="width" constant="80" id="wa9-BV-Mb6"/>
-                                        </constraints>
-                                        <inset key="imageEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
-                                        <state key="normal" image="slr-camera-2-xxl.png"/>
-                                        <connections>
-                                            <action selector="changeProfileImageButtonAction:" destination="OF5-0P-Aci" eventType="touchUpInside" id="DeD-Ac-TJS"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="RhY-Gt-KQr" secondAttribute="trailing" id="9PP-r4-etk"/>
-                                    <constraint firstAttribute="trailing" secondItem="yUc-dw-Bw5" secondAttribute="trailing" id="C9t-q5-M8I"/>
-                                    <constraint firstAttribute="bottom" secondItem="RhY-Gt-KQr" secondAttribute="bottom" id="M5U-Wh-SB6"/>
-                                    <constraint firstItem="yUc-dw-Bw5" firstAttribute="leading" secondItem="tFU-kA-ONE" secondAttribute="leading" id="NsL-S5-Jsu"/>
-                                    <constraint firstAttribute="bottom" secondItem="yUc-dw-Bw5" secondAttribute="bottom" id="g5m-fQ-sCn"/>
-                                    <constraint firstItem="yUc-dw-Bw5" firstAttribute="top" secondItem="tFU-kA-ONE" secondAttribute="top" id="seH-Fk-KkZ"/>
+                                    <constraint firstItem="LIA-xF-whk" firstAttribute="centerX" secondItem="OZl-yi-psZ" secondAttribute="centerX" id="Bc8-pE-iBw"/>
+                                    <constraint firstItem="LIA-xF-whk" firstAttribute="centerY" secondItem="OZl-yi-psZ" secondAttribute="centerY" id="Ebt-JV-XLM"/>
+                                    <constraint firstItem="i1x-76-J4L" firstAttribute="bottom" secondItem="LIA-xF-whk" secondAttribute="bottom" id="Zwe-6b-ube"/>
+                                    <constraint firstItem="LIA-xF-whk" firstAttribute="top" secondItem="i1x-76-J4L" secondAttribute="top" id="bTd-b9-fiE"/>
+                                    <constraint firstItem="LIA-xF-whk" firstAttribute="leading" secondItem="i1x-76-J4L" secondAttribute="leading" id="lQy-LF-62b"/>
+                                    <constraint firstAttribute="bottom" secondItem="LIA-xF-whk" secondAttribute="bottom" id="op7-MD-JqB"/>
+                                    <constraint firstAttribute="trailing" secondItem="LIA-xF-whk" secondAttribute="trailing" id="rbE-W0-aLc"/>
                                 </constraints>
-                            </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x0k-FZ-15H" userLabel="Profile Info View">
-                                <rect key="frame" x="16" y="428" width="382" height="309"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Владислав Киреев" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZJ-c7-2oK">
-                                        <rect key="frame" x="0.0" y="8" width="156" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rD-HZ-gsV">
-                                        <rect key="frame" x="0.0" y="37" width="382" height="264"/>
-                                        <mutableString key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</mutableString>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstItem="2rD-HZ-gsV" firstAttribute="top" secondItem="gZJ-c7-2oK" secondAttribute="bottom" constant="8" id="6w3-qz-Csh"/>
-                                    <constraint firstItem="gZJ-c7-2oK" firstAttribute="leading" secondItem="x0k-FZ-15H" secondAttribute="leading" id="9HN-36-jgo"/>
-                                    <constraint firstItem="2rD-HZ-gsV" firstAttribute="leading" secondItem="x0k-FZ-15H" secondAttribute="leading" id="K46-mH-s3N"/>
-                                    <constraint firstAttribute="bottom" secondItem="2rD-HZ-gsV" secondAttribute="bottom" constant="8" id="W9R-cz-175"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gZJ-c7-2oK" secondAttribute="trailing" constant="20" symbolic="YES" id="mco-m1-nxy"/>
-                                    <constraint firstAttribute="trailing" secondItem="2rD-HZ-gsV" secondAttribute="trailing" id="rPO-cx-u2E"/>
-                                    <constraint firstItem="gZJ-c7-2oK" firstAttribute="top" secondItem="x0k-FZ-15H" secondAttribute="top" constant="8" id="vpR-fB-r15"/>
-                                </constraints>
-                            </view>
+                                <viewLayoutGuide key="contentLayoutGuide" id="xc6-vk-pVw"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="i1x-76-J4L"/>
+                            </scrollView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7y-qG-pmT">
-                                <rect key="frame" x="16" y="786" width="382" height="30"/>
+                                <rect key="frame" x="16" y="510" width="288" height="30"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <inset key="titleEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                 <state key="normal" title="Edit"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
+                                        <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="5"/>
@@ -160,32 +191,28 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="x0k-FZ-15H" firstAttribute="leading" secondItem="Qt0-U3-lt5" secondAttribute="leading" constant="16" id="9hn-p4-gg6"/>
+                            <constraint firstItem="OZl-yi-psZ" firstAttribute="leading" secondItem="4PR-6c-Ksa" secondAttribute="leading" id="2fy-tF-ApG"/>
                             <constraint firstItem="Qt0-U3-lt5" firstAttribute="trailing" secondItem="4PR-6c-Ksa" secondAttribute="trailing" id="BmS-UL-Vj9"/>
-                            <constraint firstItem="Qt0-U3-lt5" firstAttribute="trailing" secondItem="tFU-kA-ONE" secondAttribute="trailing" constant="16" id="CHz-Gv-XMa"/>
-                            <constraint firstItem="s7y-qG-pmT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="x0k-FZ-15H" secondAttribute="bottom" constant="8" id="HUy-1U-ubo"/>
                             <constraint firstItem="4PR-6c-Ksa" firstAttribute="leading" secondItem="Qt0-U3-lt5" secondAttribute="leading" id="I4e-ym-MgZ"/>
                             <constraint firstItem="4PR-6c-Ksa" firstAttribute="top" secondItem="Qt0-U3-lt5" secondAttribute="top" id="Muu-Tm-jJj"/>
-                            <constraint firstItem="x0k-FZ-15H" firstAttribute="top" secondItem="tFU-kA-ONE" secondAttribute="bottom" id="Rtu-gJ-ydC"/>
-                            <constraint firstItem="tFU-kA-ONE" firstAttribute="leading" secondItem="Qt0-U3-lt5" secondAttribute="leading" constant="16" id="do2-XH-4Zy"/>
+                            <constraint firstItem="OZl-yi-psZ" firstAttribute="top" secondItem="4PR-6c-Ksa" secondAttribute="bottom" id="dJ6-yo-1wH"/>
                             <constraint firstItem="s7y-qG-pmT" firstAttribute="leading" secondItem="Qt0-U3-lt5" secondAttribute="leading" constant="16" id="hea-m1-2zI"/>
-                            <constraint firstItem="Qt0-U3-lt5" firstAttribute="trailing" secondItem="x0k-FZ-15H" secondAttribute="trailing" constant="16" id="jTh-4V-pwq"/>
                             <constraint firstItem="Qt0-U3-lt5" firstAttribute="trailing" secondItem="s7y-qG-pmT" secondAttribute="trailing" constant="16" id="n6l-vz-QAP"/>
-                            <constraint firstItem="s7y-qG-pmT" firstAttribute="bottom" secondItem="Qt0-U3-lt5" secondAttribute="bottom" constant="8" id="wJj-Qk-PNf"/>
-                            <constraint firstItem="tFU-kA-ONE" firstAttribute="top" secondItem="4PR-6c-Ksa" secondAttribute="bottom" id="zgs-HS-ttm"/>
+                            <constraint firstItem="s7y-qG-pmT" firstAttribute="bottom" secondItem="Qt0-U3-lt5" secondAttribute="bottom" constant="-8" id="wJj-Qk-PNf"/>
+                            <constraint firstItem="OZl-yi-psZ" firstAttribute="trailing" secondItem="4PR-6c-Ksa" secondAttribute="trailing" id="zNr-iE-biR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qt0-U3-lt5"/>
                     </view>
                     <navigationItem key="navigationItem" id="1HO-Yh-V32"/>
                     <connections>
-                        <outlet property="changeProfileImageButton" destination="RhY-Gt-KQr" id="wud-W3-KbX"/>
-                        <outlet property="profileImage" destination="yUc-dw-Bw5" id="iwe-8U-zlI"/>
+                        <outlet property="changeProfileImageButton" destination="SiM-Sa-hkn" id="yfW-mo-PAN"/>
+                        <outlet property="profileImage" destination="mbi-wh-4Fm" id="akY-hm-3DO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HX9-cn-bGY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="uCI-1j-OEj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1071.0144927536232" y="93.75"/>
+            <point key="canvasLocation" x="1070.625" y="92.957746478873247"/>
         </scene>
     </scenes>
     <resources>
