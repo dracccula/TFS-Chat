@@ -67,4 +67,15 @@ extension UIImageView {
             return UIColor(cgColor: color)
         }
     }
+    
+    @IBInspectable var background: UIColor? {
+        set {
+            guard let uiColor = newValue else { return }
+            layer.backgroundColor = uiColor.cgColor
+        }
+        get {
+            guard let color = layer.backgroundColor else { return nil }
+            return UIColor(cgColor: color)
+        }
+    }
 }
