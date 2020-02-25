@@ -19,8 +19,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsl-K9-6TB">
                                 <rect key="frame" x="264" y="16" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="vta-Ij-JMJ"/>
-                                    <constraint firstAttribute="height" constant="40" id="xDe-Eg-9Oa"/>
+                                    <constraint firstAttribute="height" constant="40" id="BcH-UY-vk4"/>
+                                    <constraint firstAttribute="width" secondItem="zsl-K9-6TB" secondAttribute="height" multiplier="1:1" id="jIp-cb-E41"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="placeholder-user.png"/>
                                 <connections>
@@ -32,6 +32,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zsl-K9-6TB" secondAttribute="trailing" constant="16" id="5FF-FU-i5b"/>
+                            <constraint firstItem="zsl-K9-6TB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Icg-0D-VZc"/>
                             <constraint firstItem="zsl-K9-6TB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="MlG-pV-r36"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -42,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="94"/>
+            <point key="canvasLocation" x="138.75" y="92.957746478873247"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="6K6-vB-9V1">
@@ -53,10 +54,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4PR-6c-Ksa" userLabel="Conrols View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uue-2J-k6S">
-                                        <rect key="frame" x="8" y="8" width="39" height="30"/>
+                                        <rect key="frame" x="16" y="8" width="44" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Close"/>
                                         <connections>
                                             <action selector="close:" destination="uCI-1j-OEj" eventType="touchUpInside" id="W3P-2S-vz0"/>
@@ -64,8 +66,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrP-P6-O4o">
-                                        <rect key="frame" x="277" y="8" width="35" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <rect key="frame" x="265" y="8" width="39" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="Save"/>
                                     </button>
                                 </subviews>
@@ -74,17 +76,17 @@
                                     <constraint firstItem="Uue-2J-k6S" firstAttribute="top" secondItem="4PR-6c-Ksa" secondAttribute="top" constant="8" id="0OQ-gM-wtm"/>
                                     <constraint firstItem="lrP-P6-O4o" firstAttribute="top" secondItem="4PR-6c-Ksa" secondAttribute="top" constant="8" id="JN1-Lq-8g1"/>
                                     <constraint firstItem="lrP-P6-O4o" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Uue-2J-k6S" secondAttribute="trailing" constant="8" symbolic="YES" id="KEP-VI-vz3"/>
-                                    <constraint firstAttribute="trailing" secondItem="lrP-P6-O4o" secondAttribute="trailing" constant="8" id="SPa-qj-6Vc"/>
+                                    <constraint firstAttribute="trailing" secondItem="lrP-P6-O4o" secondAttribute="trailing" constant="16" id="SPa-qj-6Vc"/>
                                     <constraint firstAttribute="bottom" secondItem="Uue-2J-k6S" secondAttribute="bottom" constant="8" id="T9I-rT-uwH"/>
-                                    <constraint firstItem="Uue-2J-k6S" firstAttribute="leading" secondItem="4PR-6c-Ksa" secondAttribute="leading" constant="8" id="sKB-q2-IgD"/>
+                                    <constraint firstItem="Uue-2J-k6S" firstAttribute="leading" secondItem="4PR-6c-Ksa" secondAttribute="leading" constant="16" id="sKB-q2-IgD"/>
                                     <constraint firstAttribute="bottom" secondItem="lrP-P6-O4o" secondAttribute="bottom" constant="8" id="zPX-ZW-uhQ"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZl-yi-psZ">
-                                <rect key="frame" x="0.0" y="46" width="320" height="456"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZl-yi-psZ">
+                                <rect key="frame" x="0.0" y="49" width="320" height="453"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIA-xF-whk">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="494"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1692.5"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WiG-9T-B9C" userLabel="Profile Image View">
                                                 <rect key="frame" x="16" y="0.0" width="288" height="288"/>
@@ -104,6 +106,9 @@
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                                         <state key="normal" image="slr-camera-2-xxl.png"/>
+                                                        <connections>
+                                                            <action selector="changeProfileImageButtonAction:" destination="OF5-0P-Aci" eventType="touchUpInside" id="rKk-Y8-eNf"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -115,29 +120,24 @@
                                                     <constraint firstItem="mbi-wh-4Fm" firstAttribute="width" secondItem="WiG-9T-B9C" secondAttribute="width" id="eLG-gP-j8G"/>
                                                     <constraint firstItem="mbi-wh-4Fm" firstAttribute="leading" secondItem="WiG-9T-B9C" secondAttribute="leading" id="hEd-lR-ls9"/>
                                                     <constraint firstAttribute="trailing" secondItem="mbi-wh-4Fm" secondAttribute="trailing" id="lab-AC-Hs3"/>
-                                                    <constraint firstItem="mbi-wh-4Fm" firstAttribute="top" secondItem="WiG-9T-B9C" secondAttribute="top" id="ppe-EG-WJB"/>
                                                 </constraints>
                                             </view>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rBK-Pz-lFO" userLabel="Profile Info View">
-                                                <rect key="frame" x="16" y="288" width="288" height="174"/>
+                                                <rect key="frame" x="16" y="288" width="288" height="1404.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Владислав Киреев" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIw-0r-zLP">
-                                                        <rect key="frame" x="0.0" y="8" width="223.5" height="30"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                        <rect key="frame" x="0.0" y="8" width="250" height="33.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-Wu-gOl">
-                                                        <rect key="frame" x="0.0" y="46" width="288" height="120"/>
-                                                        <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac diam vel odio iaculis fermentum. Cras nec interdum libero, non tristique nunc. Pellentesque molestie semper urna. Suspendisse accumsan, quam eget finibus placerat, odio arcu fermentum eros, vitae aliquam diam nulla at ex. Etiam tristique massa vitae nulla feugiat, nec tristique quam euismod. Duis eget turpis tortor. Donec mi justo, vestibulum sed dui sit amet, rutrum eleifend mauris. Nullam gravida tortor non justo pulvinar, eu fringilla urna aliquam. Sed lectus enim, efficitur non magna eget, molestie facilisis magna. Vivamus id pharetra nisi, nec euismod mi.
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-Wu-gOl">
+                                                        <rect key="frame" x="0.0" y="49.5" width="288" height="1339"/>
+                                                        <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac diam vel odio iaculis fermentum. Cras nec interdum libero, non tristique nunc. Pellentesque molestie semper urna. Suspendisse accumsan, quam eget finibus placerat, odio arcu fermentum eros, vitae aliquam diam nulla at ex. Etiam tristique massa vitae nulla feugiat, nec tristique quam euismod. Duis eget turpis tortor. Donec mi justo, vestibulum sed dui sit amet, rutrum eleifend mauris. Nullam gravida tortor non justo pulvinar, eu fringilla urna aliquam. Sed lectus enim, efficitur non magna eget, molestie facilisis magna. Vivamus id pharetra nisi, nec euismod mi.
 
 Cras ac fringilla sem, interdum condimentum neque. Proin at sagittis orci, non consectetur ex. Nunc lobortis pharetra lacus a ultricies. Fusce vitae urna id tortor vestibulum auctor quis eu urna. Curabitur vitae facilisis nunc, non tincidunt ipsum. Nunc sed vehicula purus. Suspendisse nisl mauris, lacinia vitae arcu ut, laoreet malesuada arcu. Phasellus vehicula, nisi vulputate volutpat dictum, magna erat commodo felis, id ultrices lectus dolor sit amet ipsum. Suspendisse pretium sollicitudin purus, quis efficitur mi pharetra sit amet. Donec eget mi ut eros lacinia sagittis. Sed vitae turpis ultricies dolor scelerisque elementum. Donec hendrerit arcu quis molestie euismod.
 
-Pellentesque porta erat ut mauris molestie tristique. Donec blandit tellus sed lorem cursus, in iaculis risus efficitur. Aenean ultrices sed neque ut luctus. Vivamus dictum mi vel diam ornare, at placerat erat feugiat. Curabitur eu augue vel sem sagittis ullamcorper. Aenean quis vestibulum leo. Curabitur magna magna, ornare at mi eu, sodales pretium purus. Mauris sed ligula at quam euismod fermentum. Nulla sit amet ipsum imperdiet, finibus felis viverra, vestibulum nunc. Proin id porta metus. Duis iaculis interdum arcu, sit amet dignissim odio feugiat eget. Nulla ultrices nulla nibh, eget scelerisque nibh hendrerit euismod. Proin a eros et nunc sodales efficitur. Mauris egestas, ex sit amet consectetur pretium, tortor erat hendrerit quam, a tempus sem erat in nisi. Nunc vel dolor varius, lobortis leo eget, viverra metus. Proin bibendum in purus sit amet rhoncus.
-
-Nam sit amet sodales est, in sodales tellus. Phasellus aliquet suscipit enim. Praesent porta scelerisque pulvinar. Morbi accumsan lobortis neque. Maecenas quis luctus mauris, at vehicula nulla. Sed finibus dolor quis tellus accumsan, nec lacinia risus dictum. Aenean a pellentesque eros. Sed maximus in dolor a sagittis. Donec malesuada laoreet lorem, at semper enim iaculis non. Ut non sapien quis nulla volutpat tincidunt congue ut quam. Fusce maximus tortor et libero eleifend consectetur. Maecenas blandit, sem eu consectetur dictum, metus purus rhoncus massa, tempor pharetra ante mi nec enim.
-
-Quisque rhoncus enim sed mi malesuada iaculis. In dolor risus, finibus a mauris eget, fringilla egestas libero. Sed id vehicula nibh. Fusce at hendrerit diam, placerat mollis elit. Vestibulum auctor diam convallis massa fringilla pretium. Integer euismod ultrices enim at tincidunt. Integer quam est, tempus et consequat varius, condimentum eu lorem. Aliquam erat volutpat. Integer interdum tristique erat, eget molestie risus. Pellentesque auctor est non libero dapibus consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut blandit nunc. Sed efficitur enim eu vestibulum tempor. Sed dictum enim in porttitor fringilla. Quisque lobortis accumsan ipsum, vitae mattis odio sollicitudin ut. Phasellus aliquet lacus sed risus elementum, a pharetra risus porta.</string>
+Pellentesque porta erat ut mauris molestie tristique. Donec blandit tellus sed lorem cursus, in iaculis risus efficitur. Aenean ultrices sed neque ut luctus. Vivamus dictum mi vel diam ornare, at placerat erat feugiat. Curabitur eu augue vel sem sagittis ullamcorper. Aenean quis vestibulum leo. Curabitur magna magna, ornare at mi eu, sodales pretium purus. Mauris sed ligula at quam euismod fermentum. Nulla sit amet ipsum imperdiet, finibus felis viverra, vestibulum nunc. Proin id porta metus. Duis iaculis interdum arcu, sit amet dignissim odio feugiat eget. Nulla ultrices nulla nibh, eget scelerisque nibh hendrerit euismod. Proin a eros et nunc sodales efficitur. Mauris egestas, ex sit amet consectetur pretium, tortor erat hendrerit quam, a tempus sem erat in nisi. Nunc vel dolor varius, lobortis leo eget, viverra metus. Proin bibendum in purus sit amet rhoncus.</mutableString>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -149,7 +149,7 @@ Quisque rhoncus enim sed mi malesuada iaculis. In dolor risus, finibus a mauris 
                                                     <constraint firstItem="TWt-Wu-gOl" firstAttribute="top" secondItem="zIw-0r-zLP" secondAttribute="bottom" constant="8" id="GxF-fk-ezw"/>
                                                     <constraint firstItem="TWt-Wu-gOl" firstAttribute="leading" secondItem="rBK-Pz-lFO" secondAttribute="leading" id="H7L-p9-PV3"/>
                                                     <constraint firstItem="zIw-0r-zLP" firstAttribute="leading" secondItem="rBK-Pz-lFO" secondAttribute="leading" id="Tzo-Py-ZS7"/>
-                                                    <constraint firstAttribute="bottom" secondItem="TWt-Wu-gOl" secondAttribute="bottom" constant="8" id="f9G-rd-5Re"/>
+                                                    <constraint firstAttribute="bottom" secondItem="TWt-Wu-gOl" secondAttribute="bottom" constant="16" id="f9G-rd-5Re"/>
                                                     <constraint firstAttribute="trailing" secondItem="TWt-Wu-gOl" secondAttribute="trailing" id="hff-bx-Ibp"/>
                                                     <constraint firstItem="zIw-0r-zLP" firstAttribute="top" secondItem="rBK-Pz-lFO" secondAttribute="top" constant="8" id="sHe-Zt-RBK"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zIw-0r-zLP" secondAttribute="trailing" constant="20" symbolic="YES" id="utf-Ui-HhL"/>
@@ -158,25 +158,24 @@ Quisque rhoncus enim sed mi malesuada iaculis. In dolor risus, finibus a mauris 
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="WiG-9T-B9C" firstAttribute="top" secondItem="LIA-xF-whk" secondAttribute="top" id="EUX-Et-hZG"/>
                                             <constraint firstAttribute="trailing" secondItem="WiG-9T-B9C" secondAttribute="trailing" constant="16" id="QVp-88-k7y"/>
                                             <constraint firstItem="rBK-Pz-lFO" firstAttribute="leading" secondItem="LIA-xF-whk" secondAttribute="leading" constant="16" id="RfY-Nh-abl"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rBK-Pz-lFO" secondAttribute="bottom" constant="32" id="S89-PN-bC1"/>
+                                            <constraint firstAttribute="bottom" secondItem="rBK-Pz-lFO" secondAttribute="bottom" id="T2R-kR-0yz"/>
                                             <constraint firstItem="rBK-Pz-lFO" firstAttribute="top" secondItem="WiG-9T-B9C" secondAttribute="bottom" id="bhq-4C-Ogo"/>
                                             <constraint firstAttribute="trailing" secondItem="rBK-Pz-lFO" secondAttribute="trailing" constant="16" id="e7X-uy-IDD"/>
+                                            <constraint firstItem="WiG-9T-B9C" firstAttribute="top" secondItem="LIA-xF-whk" secondAttribute="top" id="hP5-wL-9Te"/>
                                             <constraint firstItem="WiG-9T-B9C" firstAttribute="leading" secondItem="LIA-xF-whk" secondAttribute="leading" constant="16" id="irH-vW-zpO"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="LIA-xF-whk" firstAttribute="centerX" secondItem="OZl-yi-psZ" secondAttribute="centerX" id="Bc8-pE-iBw"/>
-                                    <constraint firstItem="LIA-xF-whk" firstAttribute="centerY" secondItem="OZl-yi-psZ" secondAttribute="centerY" id="Ebt-JV-XLM"/>
-                                    <constraint firstItem="LIA-xF-whk" firstAttribute="height" secondItem="OZl-yi-psZ" secondAttribute="height" id="Gvr-nt-g8c"/>
-                                    <constraint firstItem="i1x-76-J4L" firstAttribute="bottom" secondItem="LIA-xF-whk" secondAttribute="bottom" id="Zwe-6b-ube"/>
-                                    <constraint firstItem="LIA-xF-whk" firstAttribute="top" secondItem="i1x-76-J4L" secondAttribute="top" id="bTd-b9-fiE"/>
+                                    <constraint firstItem="LIA-xF-whk" firstAttribute="height" secondItem="OZl-yi-psZ" secondAttribute="height" priority="250" id="DPc-hW-3VV"/>
+                                    <constraint firstItem="LIA-xF-whk" firstAttribute="width" secondItem="OZl-yi-psZ" secondAttribute="width" priority="250" id="fug-6p-qz5"/>
                                     <constraint firstItem="LIA-xF-whk" firstAttribute="leading" secondItem="i1x-76-J4L" secondAttribute="leading" id="lQy-LF-62b"/>
-                                    <constraint firstAttribute="bottom" secondItem="LIA-xF-whk" secondAttribute="bottom" id="op7-MD-JqB"/>
                                     <constraint firstAttribute="trailing" secondItem="LIA-xF-whk" secondAttribute="trailing" id="rbE-W0-aLc"/>
+                                    <constraint firstAttribute="bottom" secondItem="LIA-xF-whk" secondAttribute="bottom" id="wC7-gM-tIz"/>
+                                    <constraint firstItem="LIA-xF-whk" firstAttribute="top" secondItem="xc6-vk-pVw" secondAttribute="top" id="xjb-C0-PXk"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="xc6-vk-pVw"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="i1x-76-J4L"/>
@@ -197,6 +196,9 @@ Quisque rhoncus enim sed mi malesuada iaculis. In dolor risus, finibus a mauris 
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="editProfile:" destination="OF5-0P-Aci" eventType="touchUpInside" id="Bva-sS-shz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -204,14 +206,13 @@ Quisque rhoncus enim sed mi malesuada iaculis. In dolor risus, finibus a mauris 
                             <constraint firstItem="OZl-yi-psZ" firstAttribute="leading" secondItem="4PR-6c-Ksa" secondAttribute="leading" id="2fy-tF-ApG"/>
                             <constraint firstItem="Qt0-U3-lt5" firstAttribute="trailing" secondItem="4PR-6c-Ksa" secondAttribute="trailing" id="BmS-UL-Vj9"/>
                             <constraint firstItem="4PR-6c-Ksa" firstAttribute="leading" secondItem="Qt0-U3-lt5" secondAttribute="leading" id="I4e-ym-MgZ"/>
-                            <constraint firstItem="s7y-qG-pmT" firstAttribute="bottom" secondItem="OZl-yi-psZ" secondAttribute="bottom" id="I57-Jd-dvO"/>
                             <constraint firstItem="4PR-6c-Ksa" firstAttribute="top" secondItem="Qt0-U3-lt5" secondAttribute="top" id="Muu-Tm-jJj"/>
+                            <constraint firstItem="s7y-qG-pmT" firstAttribute="top" secondItem="OZl-yi-psZ" secondAttribute="bottom" constant="8" id="TN5-ZP-JIL"/>
                             <constraint firstItem="OZl-yi-psZ" firstAttribute="top" secondItem="4PR-6c-Ksa" secondAttribute="bottom" id="dJ6-yo-1wH"/>
-                            <constraint firstItem="OZl-yi-psZ" firstAttribute="width" secondItem="Qt0-U3-lt5" secondAttribute="width" id="eXI-CZ-nws"/>
                             <constraint firstItem="s7y-qG-pmT" firstAttribute="leading" secondItem="Qt0-U3-lt5" secondAttribute="leading" constant="16" id="hea-m1-2zI"/>
                             <constraint firstItem="Qt0-U3-lt5" firstAttribute="trailing" secondItem="s7y-qG-pmT" secondAttribute="trailing" constant="16" id="n6l-vz-QAP"/>
                             <constraint firstItem="s7y-qG-pmT" firstAttribute="bottom" secondItem="Qt0-U3-lt5" secondAttribute="bottom" constant="-8" id="wJj-Qk-PNf"/>
-                            <constraint firstItem="OZl-yi-psZ" firstAttribute="trailing" secondItem="4PR-6c-Ksa" secondAttribute="trailing" id="zNr-iE-biR"/>
+                            <constraint firstItem="OZl-yi-psZ" firstAttribute="trailing" secondItem="Qt0-U3-lt5" secondAttribute="trailing" id="zNr-iE-biR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qt0-U3-lt5"/>
                     </view>

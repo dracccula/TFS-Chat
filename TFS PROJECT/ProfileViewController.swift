@@ -13,17 +13,47 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBAction func changeProfileImageButtonAction(_ sender: Any) {
+        print("changeProfileImageButtonAction pressed!")
+        showSimpleActionSheet(controller: self)
     }
     @IBOutlet weak var changeProfileImageButton: UIButton!
     @IBAction func closeAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    @IBAction func editProfile(_ sender: Any) {
+        print("editProfile pressed!")
+    }
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         profileImage.makeRounded()
         changeProfileImageButton.layer.cornerRadius =  changeProfileImageButton.frame.height / 2
+    }
+    
+    func showSimpleActionSheet(controller: UIViewController) {
+        let alert = UIAlertController(title: "Profile image", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Take photo", style: .default, handler: { (_) in
+            print("User click Approve button")
+        }))
+
+        alert.addAction(UIAlertAction(title: "Choose existing photo", style: .default, handler: { (_) in
+            print("User click Edit button")
+
+        }))
+
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+            print("User click Delete button")
+        }))
+
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
+            print("User click Dismiss button")
+        }))
+
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
     }
 }
 
