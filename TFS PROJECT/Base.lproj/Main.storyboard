@@ -86,12 +86,12 @@
                                 <rect key="frame" x="0.0" y="49" width="320" height="453"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIA-xF-whk">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1692.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="933.5"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WiG-9T-B9C" userLabel="Profile Image View">
                                                 <rect key="frame" x="16" y="0.0" width="288" height="288"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-user.png" translatesAutoresizingMaskIntoConstraints="NO" id="mbi-wh-4Fm">
+                                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-user.png" translatesAutoresizingMaskIntoConstraints="NO" id="mbi-wh-4Fm">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="288"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="mbi-wh-4Fm" secondAttribute="height" multiplier="1:1" id="AiC-eY-h2O"/>
@@ -123,7 +123,7 @@
                                                 </constraints>
                                             </view>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rBK-Pz-lFO" userLabel="Profile Info View">
-                                                <rect key="frame" x="16" y="288" width="288" height="1404.5"/>
+                                                <rect key="frame" x="16" y="288" width="288" height="645.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Владислав Киреев" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIw-0r-zLP">
                                                         <rect key="frame" x="0.0" y="8" width="250" height="33.5"/>
@@ -131,14 +131,32 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-Wu-gOl">
-                                                        <rect key="frame" x="0.0" y="49.5" width="288" height="1339"/>
-                                                        <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac diam vel odio iaculis fermentum. Cras nec interdum libero, non tristique nunc. Pellentesque molestie semper urna. Suspendisse accumsan, quam eget finibus placerat, odio arcu fermentum eros, vitae aliquam diam nulla at ex. Etiam tristique massa vitae nulla feugiat, nec tristique quam euismod. Duis eget turpis tortor. Donec mi justo, vestibulum sed dui sit amet, rutrum eleifend mauris. Nullam gravida tortor non justo pulvinar, eu fringilla urna aliquam. Sed lectus enim, efficitur non magna eget, molestie facilisis magna. Vivamus id pharetra nisi, nec euismod mi.
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-Wu-gOl">
+                                                        <rect key="frame" x="0.0" y="49.5" width="288" height="580"/>
+                                                        <string key="text">• QA Engineer
 
-Cras ac fringilla sem, interdum condimentum neque. Proin at sagittis orci, non consectetur ex. Nunc lobortis pharetra lacus a ultricies. Fusce vitae urna id tortor vestibulum auctor quis eu urna. Curabitur vitae facilisis nunc, non tincidunt ipsum. Nunc sed vehicula purus. Suspendisse nisl mauris, lacinia vitae arcu ut, laoreet malesuada arcu. Phasellus vehicula, nisi vulputate volutpat dictum, magna erat commodo felis, id ultrices lectus dolor sit amet ipsum. Suspendisse pretium sollicitudin purus, quis efficitur mi pharetra sit amet. Donec eget mi ut eros lacinia sagittis. Sed vitae turpis ultricies dolor scelerisque elementum. Donec hendrerit arcu quis molestie euismod.
+• Working in Tinkoff about 3.5 years
 
-Pellentesque porta erat ut mauris molestie tristique. Donec blandit tellus sed lorem cursus, in iaculis risus efficitur. Aenean ultrices sed neque ut luctus. Vivamus dictum mi vel diam ornare, at placerat erat feugiat. Curabitur eu augue vel sem sagittis ullamcorper. Aenean quis vestibulum leo. Curabitur magna magna, ornare at mi eu, sodales pretium purus. Mauris sed ligula at quam euismod fermentum. Nulla sit amet ipsum imperdiet, finibus felis viverra, vestibulum nunc. Proin id porta metus. Duis iaculis interdum arcu, sit amet dignissim odio feugiat eget. Nulla ultrices nulla nibh, eget scelerisque nibh hendrerit euismod. Proin a eros et nunc sodales efficitur. Mauris egestas, ex sit amet consectetur pretium, tortor erat hendrerit quam, a tempus sem erat in nisi. Nunc vel dolor varius, lobortis leo eget, viverra metus. Proin bibendum in purus sit amet rhoncus.</mutableString>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+• Participated in 3+ Tinkoff projects
+
+• Like to testing everything around
+
+• Interested in mobile development
+
+• Interested in mobile photography
+
+• Studying Swift for broadening horizons
+
+• Completed training Tinkoff Fintech School Android 2019
+
+• Planing to develop application and post it to the Play Store
+
+• English grammar bad user
+
+• Traveller
+
+• Emo music lover</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                         <size key="shadowOffset" width="0.0" height="0.0"/>
@@ -197,7 +215,7 @@ Pellentesque porta erat ut mauris molestie tristique. Donec blandit tellus sed l
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="editProfile:" destination="OF5-0P-Aci" eventType="touchUpInside" id="Bva-sS-shz"/>
+                                    <action selector="editProfileAction:" destination="OF5-0P-Aci" eventType="touchUpInside" id="Bva-sS-shz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -219,6 +237,7 @@ Pellentesque porta erat ut mauris molestie tristique. Donec blandit tellus sed l
                     <navigationItem key="navigationItem" id="1HO-Yh-V32"/>
                     <connections>
                         <outlet property="changeProfileImageButton" destination="SiM-Sa-hkn" id="yfW-mo-PAN"/>
+                        <outlet property="editProfileButton" destination="s7y-qG-pmT" id="9bg-om-2RS"/>
                         <outlet property="profileImage" destination="mbi-wh-4Fm" id="akY-hm-3DO"/>
                     </connections>
                 </viewController>

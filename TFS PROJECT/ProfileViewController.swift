@@ -8,55 +8,115 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     
     @IBOutlet weak var profileImage: UIImageView!
-    @IBAction func changeProfileImageButtonAction(_ sender: Any) {
-        print("changeProfileImageButtonAction pressed!")
-        showSimpleActionSheet(controller: self)
+    let imagePicker = UIImagePickerController()
+    @IBAction func changeProfileImageButtonAction(_ sender: UIButton)
+    {
+        showActionSheet(sender)
     }
+
     @IBOutlet weak var changeProfileImageButton: UIButton!
     @IBAction func closeAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    @IBAction func editProfile(_ sender: Any) {
-        print("editProfile pressed!")
+    @IBAction func editProfileAction(_ sender: Any) {
+    }
+    @IBOutlet weak var editProfileButton: UIButton!
+    
+    /* На этом этапе еще нет ни самой view, и нет аутлетов
+    из-за этого фатальная ошибка
+    Fatal error: Unexpectedly found nil while unwrapping an Optional value
+    при вызове print("\(#function)  \(editProfileButton.frame)")*/
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
-    
-    
+    /* На данном этапе размеры view не такие, какими они будут после вывода на экран.
+     Поэтому, использовать вычисления, основанные на ширине / высоте view, в методе viewDidload не рекомендуется. */
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("\(#function) \(editProfileButton.frame)")
         profileImage.makeRounded()
         changeProfileImageButton.layer.cornerRadius =  changeProfileImageButton.frame.height / 2
+        imagePicker.delegate = self
     }
     
-    func showSimpleActionSheet(controller: UIViewController) {
-        let alert = UIAlertController(title: "Profile image", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Take photo", style: .default, handler: { (_) in
-            print("User click Approve button")
+    /* При вызове viewWillAppear, view уже находится в иерархии отображения (view hierarchy) и имеет актуальные размеры, так, что здесь можно производить расчеты, основанные на ширине / высоте view.
+     так как viewDidAppear вызываеться после viewWillAppear у него уже тоже актуальные размеры */
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        print("\(#function) \(editProfileButton.frame)")
+    }
+    
+    // MARK: Showing Action sheet for image chosing
+    func showActionSheet(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+            self.openCamera()
         }))
 
-        alert.addAction(UIAlertAction(title: "Choose existing photo", style: .default, handler: { (_) in
-            print("User click Edit button")
-
+        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+            self.openGallery()
         }))
 
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
-            print("User click Delete button")
-        }))
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
 
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { (_) in
-            print("User click Dismiss button")
-        }))
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            alert.popoverPresentationController?.sourceView = sender
+            alert.popoverPresentationController?.sourceRect = sender.bounds
+            alert.popoverPresentationController?.permittedArrowDirections = .up
+        default:
+            break
+        }
 
-        self.present(alert, animated: true, completion: {
-            print("completion block")
-        })
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: openCamera function
+    func openCamera() {
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
+        {
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera
+            imagePicker.cameraCaptureMode = .photo
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        else
+        {
+            let alert  = UIAlertController(title: "Warning", message: "You don't have camera", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    // MARK: openGallery function
+    func openGallery() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary){
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        else
+        {
+            let alert  = UIAlertController(title: "Warning", message: "You don't have permission to access gallery.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: imagePickerController
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let image = info[.originalImage] as? UIImage {
+               self.profileImage.image = image
+            }
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
+// MARK: Extension which make image rounded
 extension UIImageView {
     func makeRounded() {
         self.layer.borderWidth = 0
@@ -67,8 +127,8 @@ extension UIImageView {
     }
 }
 
+// MARK: Designable extension for UIButton
 @IBDesignable extension UIButton {
-
     @IBInspectable var borderWidth: CGFloat {
         set {
             layer.borderWidth = newValue

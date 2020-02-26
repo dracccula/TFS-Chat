@@ -20,11 +20,11 @@ class ViewController: UIViewController {
     }
     
     func openProfileView() {
-        print("avatarButton pressed!")
     }
 
 }
 
+// MARK: Extension which make image rounded
 extension UIButton {
     func makeRounded() {
         self.layer.borderWidth = 1

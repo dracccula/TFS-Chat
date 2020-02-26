@@ -14,7 +14,6 @@
 		597FBF8F23FB214D00314FF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597FBF8D23FB214D00314FF2 /* LaunchScreen.storyboard */; };
 		597FBF9D23FB283100314FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 597FBF9C23FB283100314FF2 /* Assets.xcassets */; };
 		597FBF9F23FB316900314FF2 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 597FBF9E23FB316900314FF2 /* Debug.xcconfig */; };
-		59B7069123FF213700E510FE /* default-avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 59B7069023FF213700E510FE /* default-avatar.png */; };
 		59B7069323FF24DC00E510FE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B7069223FF24DC00E510FE /* ProfileViewController.swift */; };
 		6A3C725C23FFBB590086DD89 /* placeholder-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A3C725A23FFBB580086DD89 /* placeholder-user.png */; };
 		6A3C725D23FFBB590086DD89 /* slr-camera-2-xxl.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A3C725B23FFBB590086DD89 /* slr-camera-2-xxl.png */; };
@@ -31,7 +30,6 @@
 		597FBF9C23FB283100314FF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		597FBF9E23FB316900314FF2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		597FBFA023FB32F500314FF2 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		59B7069023FF213700E510FE /* default-avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "default-avatar.png"; path = "Assets.xcassets/default-avatar.png"; sourceTree = "<group>"; };
 		59B7069223FF24DC00E510FE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6A3C725A23FFBB580086DD89 /* placeholder-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "placeholder-user.png"; path = "Assets.xcassets/placeholder-user.png"; sourceTree = "<group>"; };
 		6A3C725B23FFBB590086DD89 /* slr-camera-2-xxl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "slr-camera-2-xxl.png"; path = "Assets.xcassets/slr-camera-2-xxl.png"; sourceTree = "<group>"; };
@@ -56,7 +54,6 @@
 				597FBF9C23FB283100314FF2 /* Assets.xcassets */,
 				6A3C725A23FFBB580086DD89 /* placeholder-user.png */,
 				6A3C725B23FFBB590086DD89 /* slr-camera-2-xxl.png */,
-				59B7069023FF213700E510FE /* default-avatar.png */,
 				597FBF8123FB214800314FF2 /* TFS PROJECT */,
 				597FBF8023FB214800314FF2 /* Products */,
 			);
@@ -142,7 +139,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59B7069123FF213700E510FE /* default-avatar.png in Resources */,
 				597FBF8F23FB214D00314FF2 /* LaunchScreen.storyboard in Resources */,
 				6A3C725D23FFBB590086DD89 /* slr-camera-2-xxl.png in Resources */,
 				597FBF9D23FB283100314FF2 /* Assets.xcassets in Resources */,
