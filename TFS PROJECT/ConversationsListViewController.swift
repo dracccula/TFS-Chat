@@ -21,14 +21,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "conversationCell")
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "conversationCell") as? ConversationViewCell
         {
-//                switch statuses[indexPath.item] {
-//                case true:
-//                    statusIndicator.backgroundColor = UIColor.green
-//                case false:
-//                    statusIndicator.backgroundColor = UIColor.red
-//                }
+                switch statuses[indexPath.item] {
+                case true:
+                    cell.statusIndicator.backgroundColor = UIColor.green
+                case false:
+                    cell.statusIndicator.backgroundColor = UIColor.red
+                }
             return cell
         }
         return UITableViewCell()
