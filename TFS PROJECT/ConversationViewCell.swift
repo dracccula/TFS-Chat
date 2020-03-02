@@ -11,6 +11,8 @@ import UIKit
 class ConversationViewCell: UITableViewCell {
     
     @IBOutlet weak var statusIndicator: UIView!
+    
+    
     struct ConversationCellModel {
         let name: String
         let message: String
@@ -21,7 +23,7 @@ class ConversationViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        statusIndicator.layer.cornerRadius = 4
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

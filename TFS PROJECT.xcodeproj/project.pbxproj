@@ -15,6 +15,7 @@
 		597FBF8F23FB214D00314FF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597FBF8D23FB214D00314FF2 /* LaunchScreen.storyboard */; };
 		597FBF9D23FB283100314FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 597FBF9C23FB283100314FF2 /* Assets.xcassets */; };
 		597FBF9F23FB316900314FF2 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 597FBF9E23FB316900314FF2 /* Debug.xcconfig */; };
+		59AE9D71240DA9A000251278 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE9D70240DA9A000251278 /* ConversationViewController.swift */; };
 		59B7069323FF24DC00E510FE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B7069223FF24DC00E510FE /* ProfileViewController.swift */; };
 		6A3C725C23FFBB590086DD89 /* placeholder-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A3C725A23FFBB580086DD89 /* placeholder-user.png */; };
 		6A3C725D23FFBB590086DD89 /* slr-camera-2-xxl.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A3C725B23FFBB590086DD89 /* slr-camera-2-xxl.png */; };
@@ -32,6 +33,7 @@
 		597FBF9C23FB283100314FF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		597FBF9E23FB316900314FF2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		597FBFA023FB32F500314FF2 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		59AE9D70240DA9A000251278 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		59B7069223FF24DC00E510FE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6A3C725A23FFBB580086DD89 /* placeholder-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "placeholder-user.png"; path = "Assets.xcassets/placeholder-user.png"; sourceTree = "<group>"; };
 		6A3C725B23FFBB590086DD89 /* slr-camera-2-xxl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "slr-camera-2-xxl.png"; path = "Assets.xcassets/slr-camera-2-xxl.png"; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				597FBF8623FB214800314FF2 /* ConversationsListViewController.swift */,
 				59B7069223FF24DC00E510FE /* ProfileViewController.swift */,
 				597FBF8823FB214900314FF2 /* Main.storyboard */,
+				59AE9D70240DA9A000251278 /* ConversationViewController.swift */,
 				597FA272240BF17700F0103F /* ConversationViewCell.swift */,
 				597FBF8D23FB214D00314FF2 /* LaunchScreen.storyboard */,
 				597FBF9023FB214D00314FF2 /* Info.plist */,
@@ -160,6 +163,7 @@
 			files = (
 				597FBF8723FB214800314FF2 /* ConversationsListViewController.swift in Sources */,
 				597FBF8323FB214800314FF2 /* AppDelegate.swift in Sources */,
+				59AE9D71240DA9A000251278 /* ConversationViewController.swift in Sources */,
 				59B7069323FF24DC00E510FE /* ProfileViewController.swift in Sources */,
 				597FA273240BF17700F0103F /* ConversationViewCell.swift in Sources */,
 				597FBF8523FB214800314FF2 /* SceneDelegate.swift in Sources */,
