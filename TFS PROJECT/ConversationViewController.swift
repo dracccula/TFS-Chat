@@ -11,7 +11,7 @@ import UIKit
 class ConversationViewController: UIViewController {
     
     override func viewDidLoad() {
-        self.title = "Name"
+//        self.title = "Name"
     }
     
 }

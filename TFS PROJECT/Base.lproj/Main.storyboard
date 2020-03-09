@@ -53,14 +53,14 @@
                                 <rect key="frame" x="0.0" y="116" width="320" height="452"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="conversationCell" id="Jlb-2D-xSI" customClass="ConversationViewCell" customModule="TFS_PROJECT" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="65"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jlb-2D-xSI" id="qDk-ja-Dba">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPa-Oo-CkS" userLabel="Status Indicator">
-                                                    <rect key="frame" x="16" y="28.5" width="8" height="8"/>
+                                                    <rect key="frame" x="16" y="38" width="8" height="8"/>
                                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="8" id="jZM-Ff-PPI"/>
@@ -73,8 +73,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4O-4o-fvE" userLabel="Message">
-                                                    <rect key="frame" x="40" y="37" width="272" height="19.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4O-4o-fvE" userLabel="Message">
+                                                    <rect key="frame" x="40" y="37" width="270" height="38.5"/>
                                                     <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at sollicitudin nulla. Suspendisse consectetur elit elit, nec euismod felis semper eu. Curabitur vehicula sodales ligula sed fringilla. Maecenas vel vestibulum est, ac viverra sem. Nulla erat eros, sodales non magna ornare, auctor convallis mi. Fusce augue leo, imperdiet non ex eu, accumsan feugiat lectus. Nam iaculis sapien nec consequat cursus. Integer sed bibendum mauris, at dapibus metus.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -104,8 +104,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="dateLabel" destination="oaD-an-h5J" id="shO-jo-8KT"/>
+                                            <outlet property="messageLabel" destination="y4O-4o-fvE" id="az2-Rf-eiw"/>
+                                            <outlet property="nameLabel" destination="TsM-7s-RzS" id="sSI-gH-JiY"/>
                                             <outlet property="statusIndicator" destination="DPa-Oo-CkS" id="VCf-87-PQn"/>
-                                            <segue destination="duX-zf-QkK" kind="show" id="gEc-hJ-mPG"/>
+                                            <segue destination="duX-zf-QkK" kind="show" identifier="dataToConversation" id="gEc-hJ-mPG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -136,7 +139,7 @@
         <!--ConversationViewController-->
         <scene sceneID="zqH-cg-ygt">
             <objects>
-                <viewController id="duX-zf-QkK" userLabel="ConversationViewController" customClass="ConversationViewController" customModule="TFS_PROJECT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConversationViewController" id="duX-zf-QkK" userLabel="ConversationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yKx-Mj-7Ds">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

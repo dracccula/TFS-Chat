@@ -17,9 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     enum TableSection: Int {
         case online, offline
     }
-    let SectionHeaderHeight: CGFloat = 25
-    var data = [TableSection: [[String: String]]]()
-    var statuses = [true, true, false, true, false]
+    var messagesArray: [ConversationViewCell.ConversationCellModel] = [ConversationViewCell.ConversationCellModel(name: "Buddha", message: "You yourself, as much as anybody in the entire universe, deserve your love and affection.", date: Date.init(timeIntervalSince1970: 1583589958), isOnline: true, hasUnreadMessages: true), ConversationViewCell.ConversationCellModel(name: "Mother Teresa", message: "Love until it hurts. Real love is always painful and hurts: then it is real and pure.", date: Date.init(timeIntervalSince1970: 1583780758), isOnline: false, hasUnreadMessages: false), ConversationViewCell.ConversationCellModel(name: "Alan Paton", message: "It is my belief that the only power which can resist the power of fear is the power of love.", date: Date.init(timeIntervalSince1970: 1583319615), isOnline: false, hasUnreadMessages: false), ConversationViewCell.ConversationCellModel(name: "Nelson Aldrich Rockefeller", message: "Never forget that the most powerful force on earth is love.", date: Date.init(timeIntervalSince1970: 1581081000), isOnline: true, hasUnreadMessages: false), ConversationViewCell.ConversationCellModel(name: "F. Melvin Hammond", message: "Can we do too much for the Lord? Certainly we all love Him. Therefore, I implore us, keep His commandments and become more like Him. Come unto Christ, eat the bread of life, drink the living water, and feast on His limitless love. He is our Savior, our Master, of whom I bear my humble witness.", date: Date.init(timeIntervalSince1970: 1583265600), isOnline: true, hasUnreadMessages: true), ConversationViewCell.ConversationCellModel(name: "Martin Luther King", message: nil, date: Date.init(timeIntervalSince1970: 1581084358), isOnline: true, hasUnreadMessages: false)]
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -27,49 +25,56 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return statuses.count
+        if section == 0{
+            return messagesArray.map{$0.isOnline}.filter{$0 == true}.count
+        } else {
+            return messagesArray.map{$0.isOnline}.filter{$0 == false}.count
+        }
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+           switch section {
+           case 0:
+               return "Online"
+           case 1:
+               return "History"
+           default:
+               return nil
+           }
+       }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "conversationCell") as? ConversationViewCell
-        {
-                switch statuses[indexPath.item] {
-                case true:
-                    cell.statusIndicator.backgroundColor = UIColor.green
-                case false:
-                    cell.statusIndicator.backgroundColor = UIColor.red
-                }
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "conversationCell", for: indexPath) as! ConversationViewCell
+            cell.configure(with: messagesArray.filter{$0.isOnline == true}[indexPath.row])
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "conversationCell", for: indexPath) as! ConversationViewCell
+            cell.configure(with: messagesArray.filter{$0.isOnline == false}[indexPath.row])
             return cell
         }
-        return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if let tableSection = TableSection(rawValue: section), let movieData = data[tableSection], movieData.count > 0 {
-          return SectionHeaderHeight
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let storyBoard =  UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyBoard.instantiateViewController(withIdentifier: "ConversationViewController") as! ConversationViewController
+        switch indexPath.section {
+        case 0:
+            let name = messagesArray.filter{$0.isOnline == true}[indexPath.row].name
+            print(name)
+//            vc.title = name
+//            self.navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let name = messagesArray.filter{$0.isOnline == false}[indexPath.row].name
+            print(name)
+//            vc.title = name
+//            self.navigationController?.pushViewController(vc, animated: true)
+        default:
+            print("Unknown")
+//            vc.title = "Unknown"
+//            self.navigationController?.pushViewController(vc, animated: true)
         }
-        return 0
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: SectionHeaderHeight))
-        view.backgroundColor = UIColor(red: 253.0/255.0, green: 240.0/255.0, blue: 196.0/255.0, alpha: 1)
-        let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width - 30, height: SectionHeaderHeight))
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = UIColor.black
-        if let tableSection = TableSection(rawValue: section)
-        {
-            switch tableSection {
-            case .online:
-                label.text = "Online"
-            case .offline:
-                label.text = "Offline"
-            }
-        }
-        view.addSubview(label)
-        return view
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
