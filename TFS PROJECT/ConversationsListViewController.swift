@@ -17,7 +17,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     enum TableSection: Int {
         case online, offline
     }
-    var messagesArray: [ConversationViewCell.ConversationCellModel] = [ConversationViewCell.ConversationCellModel(name: "Buddha", message: "You yourself, as much as anybody in the entire universe, deserve your love and affection.", date: Date.init(timeIntervalSince1970: 1583589958), isOnline: true, hasUnreadMessages: true), ConversationViewCell.ConversationCellModel(name: "Mother Teresa", message: "Love until it hurts. Real love is always painful and hurts: then it is real and pure.", date: Date.init(timeIntervalSince1970: 1583780758), isOnline: false, hasUnreadMessages: false), ConversationViewCell.ConversationCellModel(name: "Alan Paton", message: "It is my belief that the only power which can resist the power of fear is the power of love.", date: Date.init(timeIntervalSince1970: 1583319615), isOnline: false, hasUnreadMessages: false), ConversationViewCell.ConversationCellModel(name: "Nelson Aldrich Rockefeller", message: "Never forget that the most powerful force on earth is love.", date: Date.init(timeIntervalSince1970: 1581081000), isOnline: true, hasUnreadMessages: false), ConversationViewCell.ConversationCellModel(name: "F. Melvin Hammond", message: "Can we do too much for the Lord? Certainly we all love Him. Therefore, I implore us, keep His commandments and become more like Him. Come unto Christ, eat the bread of life, drink the living water, and feast on His limitless love. He is our Savior, our Master, of whom I bear my humble witness.", date: Date.init(timeIntervalSince1970: 1583265600), isOnline: true, hasUnreadMessages: true), ConversationViewCell.ConversationCellModel(name: "Martin Luther King", message: nil, date: Date.init(timeIntervalSince1970: 1581084358), isOnline: true, hasUnreadMessages: false)]
+    var messagesArray: [ConversationViewCell.ConversationCellModel] = [
+        ConversationViewCell.ConversationCellModel(id: 1, name: "Buddha", message: "You yourself, as much as anybody in the entire universe, deserve your love and affection.", date: Date.init(timeIntervalSince1970: 1583589958), isOnline: true, hasUnreadMessages: true),
+        ConversationViewCell.ConversationCellModel(id: 2, name: "Mother Teresa", message: "Love until it hurts. Real love is always painful and hurts: then it is real and pure.", date: Date.init(timeIntervalSince1970: 1583780758), isOnline: false, hasUnreadMessages: false),
+        ConversationViewCell.ConversationCellModel(id: 3, name: "Alan Paton", message: "It is my belief that the only power which can resist the power of fear is the power of love.", date: Date.init(timeIntervalSince1970: 1583319615), isOnline: false, hasUnreadMessages: false),
+        ConversationViewCell.ConversationCellModel(id: 4, name: "Nelson Aldrich Rockefeller", message: "Never forget that the most powerful force on earth is love.", date: Date.init(timeIntervalSince1970: 1581081000), isOnline: true, hasUnreadMessages: false),
+        ConversationViewCell.ConversationCellModel(id: 5, name: "F. Melvin Hammond", message: "Can we do too much for the Lord? Certainly we all love Him. Therefore, I implore us, keep His commandments and become more like Him. Come unto Christ, eat the bread of life, drink the living water, and feast on His limitless love. He is our Savior, our Master, of whom I bear my humble witness.", date: Date.init(timeIntervalSince1970: 1583265600), isOnline: true, hasUnreadMessages: true),
+        ConversationViewCell.ConversationCellModel(id: 6, name: "Martin Luther King", message: nil, date: Date.init(timeIntervalSince1970: 1581084358), isOnline: true, hasUnreadMessages: false),
+        ConversationViewCell.ConversationCellModel(id: 7, name: "Zsa Zsa Gabor", message: "One of my theories is that men love with their eyes; women love with their ears.", date: Date.init(timeIntervalSince1970: 1583780758), isOnline: false, hasUnreadMessages: false),
+        ConversationViewCell.ConversationCellModel(id: 8, name: "Alexander Smith", message: "Love is but the discovery of ourselves in others, and the delight in the recognition.", date: Date.init(timeIntervalSince1970: 1583319615), isOnline: false, hasUnreadMessages: false),
+        ConversationViewCell.ConversationCellModel(id: 9, name: "Alexander Pushkin", message: "I loved you; even now I may confess, Some embers of my love their fire retain; But do not let it cause you more distress, I do not want to sadden you again. Hopeless and tongue tied, yet I loved you dearly With pangs the jealous and the timid know; So tenderly I loved you, so sincerely, I pray God grant another love you so.", date: Date.init(timeIntervalSince1970: 1583780758), isOnline: true, hasUnreadMessages: false),
+        ConversationViewCell.ConversationCellModel(id: 10, name: "James Thurber", message: "I have always thought of a dog lover as a dog that was in love with another dog.", date: Date.init(timeIntervalSince1970: 1583319615), isOnline: true, hasUnreadMessages: false)]
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -56,19 +66,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let storyBoard =  UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyBoard.instantiateViewController(withIdentifier: "ConversationViewController") as! ConversationViewController
+        let storyBoard =  UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: "ConversationViewController") as? ConversationViewController
+            else {
+                return print("error")
+        }
         switch indexPath.section {
         case 0:
             let name = messagesArray.filter{$0.isOnline == true}[indexPath.row].name
-            print(name)
-//            vc.title = name
-//            self.navigationController?.pushViewController(vc, animated: true)
+            let id =  messagesArray.filter{$0.isOnline == true}[indexPath.row].id
+            print("id: \(id), name: \(name)")
+            vc.title = name
+            self.navigationController?.pushViewController(vc, animated: true)
         case 1:
             let name = messagesArray.filter{$0.isOnline == false}[indexPath.row].name
-            print(name)
-//            vc.title = name
-//            self.navigationController?.pushViewController(vc, animated: true)
+            let id =  messagesArray.filter{$0.isOnline == false}[indexPath.row].id
+            print("id: \(id), name: \(name)")
+            vc.title = name
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             print("Unknown")
 //            vc.title = "Unknown"
