@@ -29,6 +29,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         ConversationViewCell.ConversationCellModel(id: 9, name: "Alexander Pushkin", message: "I loved you; even now I may confess, Some embers of my love their fire retain; But do not let it cause you more distress, I do not want to sadden you again. Hopeless and tongue tied, yet I loved you dearly With pangs the jealous and the timid know; So tenderly I loved you, so sincerely, I pray God grant another love you so.", date: Date.init(timeIntervalSince1970: 1583780758), isOnline: true, hasUnreadMessages: false),
         ConversationViewCell.ConversationCellModel(id: 10, name: "James Thurber", message: "I have always thought of a dog lover as a dog that was in love with another dog.", date: Date.init(timeIntervalSince1970: 1583319615), isOnline: true, hasUnreadMessages: false)]
     
+    var onlineConversations : [ConversationViewCell.ConversationCellModel] = []
+    var offlineConversations : [ConversationViewCell.ConversationCellModel] = []
+    
+    func sortArray(source: [ConversationViewCell.ConversationCellModel], isOnline: Bool) -> [ConversationViewCell.ConversationCellModel]{
+        return source.filter{$0.isOnline == isOnline}
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
       return 2
@@ -36,9 +42,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
-            return messagesArray.map{$0.isOnline}.filter{$0 == true}.count
+            return onlineConversations.count
         } else {
-            return messagesArray.map{$0.isOnline}.filter{$0 == false}.count
+            return offlineConversations.count
         }
     }
     
@@ -56,11 +62,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "conversationCell", for: indexPath) as! ConversationViewCell
-            cell.configure(with: messagesArray.filter{$0.isOnline == true}[indexPath.row])
+            cell.configure(with: onlineConversations[indexPath.row])
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "conversationCell", for: indexPath) as! ConversationViewCell
-            cell.configure(with: messagesArray.filter{$0.isOnline == false}[indexPath.row])
+            cell.configure(with: offlineConversations[indexPath.row])
             return cell
         }
     }
@@ -73,14 +79,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         switch indexPath.section {
         case 0:
-            let name = messagesArray.filter{$0.isOnline == true}[indexPath.row].name
-            let id =  messagesArray.filter{$0.isOnline == true}[indexPath.row].id
+            let name = onlineConversations[indexPath.row].name
+            let id =  onlineConversations[indexPath.row].id
             print("id: \(id), name: \(name)")
             vc.title = name
             self.navigationController?.pushViewController(vc, animated: true)
         case 1:
-            let name = messagesArray.filter{$0.isOnline == false}[indexPath.row].name
-            let id =  messagesArray.filter{$0.isOnline == false}[indexPath.row].id
+            let name = offlineConversations[indexPath.row].name
+            let id =  offlineConversations[indexPath.row].id
             print("id: \(id), name: \(name)")
             vc.title = name
             self.navigationController?.pushViewController(vc, animated: true)
@@ -94,6 +100,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         profileButton.makeRounded()
+        onlineConversations = sortArray(source: messagesArray, isOnline: true)
+        offlineConversations = sortArray(source: messagesArray, isOnline: false)
         conversationsTableView.dataSource = self
         conversationsTableView.delegate = self
     }

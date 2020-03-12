@@ -108,7 +108,6 @@
                                             <outlet property="messageLabel" destination="y4O-4o-fvE" id="az2-Rf-eiw"/>
                                             <outlet property="nameLabel" destination="TsM-7s-RzS" id="sSI-gH-JiY"/>
                                             <outlet property="profileImage" destination="5Pg-Z0-lfy" id="LMd-EC-oAK"/>
-                                            <segue destination="duX-zf-QkK" kind="show" identifier="dataToConversation" id="gEc-hJ-mPG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -139,7 +138,7 @@
         <!--ConversationViewController-->
         <scene sceneID="zqH-cg-ygt">
             <objects>
-                <viewController storyboardIdentifier="ConversationViewController" id="duX-zf-QkK" userLabel="ConversationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConversationViewController" id="duX-zf-QkK" userLabel="ConversationViewController" customClass="ConversationViewController" customModule="TFS_PROJECT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yKx-Mj-7Ds">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
