@@ -12,12 +12,14 @@ class MessageViewCell: UITableViewCell, ConfigurableView {
     typealias ConfigurationModel = MessageCellModel
     
     
+    @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var messageText: UILabel!
     
     struct MessageCellModel {
         let id: Int
         let message: String
         let date: Date
+        let selfMessage: Bool
     }
     
     func configure(with model: ConfigurationModel) {

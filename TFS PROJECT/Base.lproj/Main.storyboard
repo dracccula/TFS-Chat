@@ -165,10 +165,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SQK-xe-0dB" secondAttribute="trailing" constant="8" id="5Ho-w1-6bF"/>
-                                                        <constraint firstItem="SQK-xe-0dB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aLz-ob-Zb6" secondAttribute="leading" constant="8" id="P0N-L2-18d"/>
+                                                        <constraint firstAttribute="trailing" secondItem="SQK-xe-0dB" secondAttribute="trailing" constant="8" id="5Ho-w1-6bF"/>
+                                                        <constraint firstItem="SQK-xe-0dB" firstAttribute="leading" secondItem="aLz-ob-Zb6" secondAttribute="leading" constant="8" id="P0N-L2-18d"/>
                                                         <constraint firstItem="SQK-xe-0dB" firstAttribute="top" secondItem="aLz-ob-Zb6" secondAttribute="top" constant="8" id="i1V-Di-DWY"/>
                                                         <constraint firstAttribute="bottom" secondItem="SQK-xe-0dB" secondAttribute="bottom" constant="8" id="kZv-fw-Ddq"/>
                                                     </constraints>
@@ -183,6 +183,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageText" destination="SQK-xe-0dB" id="qWo-dL-GGY"/>
+                                            <outlet property="messageView" destination="aLz-ob-Zb6" id="pes-M0-i1O"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
