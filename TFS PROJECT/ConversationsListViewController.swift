@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     enum TableSection: Int {
         case online, offline
     }
-    var messagesArray: [ConversationViewCell.ConversationCellModel] = [
+    var contactsMessagesArray: [ConversationViewCell.ConversationCellModel] = [
         ConversationViewCell.ConversationCellModel(id: 1, name: "Buddha", message: "You yourself, as much as anybody in the entire universe, deserve your love and affection.", date: Date.init(timeIntervalSince1970: 1583589958), isOnline: true, hasUnreadMessages: true),
         ConversationViewCell.ConversationCellModel(id: 2, name: "Mother Teresa", message: "Love until it hurts. Real love is always painful and hurts: then it is real and pure.", date: Date.init(timeIntervalSince1970: 1583780758), isOnline: false, hasUnreadMessages: false),
         ConversationViewCell.ConversationCellModel(id: 3, name: "Alan Paton", message: "It is my belief that the only power which can resist the power of fear is the power of love.", date: Date.init(timeIntervalSince1970: 1583319615), isOnline: false, hasUnreadMessages: false),
@@ -100,8 +100,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         profileButton.makeRounded()
-        onlineConversations = sortArray(source: messagesArray, isOnline: true)
-        offlineConversations = sortArray(source: messagesArray, isOnline: false)
+        onlineConversations = sortArray(source: contactsMessagesArray, isOnline: true)
+        offlineConversations = sortArray(source: contactsMessagesArray, isOnline: false)
         conversationsTableView.dataSource = self
         conversationsTableView.delegate = self
     }

@@ -142,16 +142,71 @@
                     <view key="view" contentMode="scaleToFill" id="yKx-Mj-7Ds">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eRR-yo-aLj" userLabel="Conversation Table View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="messageCell" id="YDl-kc-m3H" userLabel="messageCell" customClass="MessageViewCell" customModule="TFS_PROJECT" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="393"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YDl-kc-m3H" id="uOE-wR-u7G">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="393"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLz-ob-Zb6" userLabel="messageView">
+                                                    <rect key="frame" x="32" y="16" width="256" height="361"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQK-xe-0dB" userLabel="Message">
+                                                            <rect key="frame" x="8" y="8" width="240" height="345"/>
+                                                            <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices lacinia urna, eget tincidunt ligula scelerisque sed. Duis facilisis bibendum mauris non posuere. Suspendisse potenti. Vivamus cursus pellentesque orci, id gravida sapien sagittis eget. Integer erat ligula, consequat in condimentum quis, ornare ac quam. Mauris metus est, sagittis ac commodo ac, volutpat a dui. Aenean est arcu, vestibulum fringilla malesuada sit amet, mollis in metus.</string>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SQK-xe-0dB" secondAttribute="trailing" constant="8" id="5Ho-w1-6bF"/>
+                                                        <constraint firstItem="SQK-xe-0dB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aLz-ob-Zb6" secondAttribute="leading" constant="8" id="P0N-L2-18d"/>
+                                                        <constraint firstItem="SQK-xe-0dB" firstAttribute="top" secondItem="aLz-ob-Zb6" secondAttribute="top" constant="8" id="i1V-Di-DWY"/>
+                                                        <constraint firstAttribute="bottom" secondItem="SQK-xe-0dB" secondAttribute="bottom" constant="8" id="kZv-fw-Ddq"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="aLz-ob-Zb6" secondAttribute="bottom" constant="16" id="4RI-iS-Q3l"/>
+                                                <constraint firstItem="aLz-ob-Zb6" firstAttribute="top" secondItem="uOE-wR-u7G" secondAttribute="top" constant="16" id="78E-Oq-vn4"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aLz-ob-Zb6" secondAttribute="trailing" constant="32" id="XJw-ZT-wff"/>
+                                                <constraint firstItem="aLz-ob-Zb6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uOE-wR-u7G" secondAttribute="leading" constant="32" id="gH9-oV-cfM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="messageText" destination="SQK-xe-0dB" id="qWo-dL-GGY"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="SuP-BN-Bbv" firstAttribute="bottom" secondItem="eRR-yo-aLj" secondAttribute="bottom" id="7RG-km-Jh6"/>
+                            <constraint firstItem="eRR-yo-aLj" firstAttribute="leading" secondItem="SuP-BN-Bbv" secondAttribute="leading" id="9L3-sJ-I9e"/>
+                            <constraint firstItem="SuP-BN-Bbv" firstAttribute="trailing" secondItem="eRR-yo-aLj" secondAttribute="trailing" id="M2s-eB-xkg"/>
+                            <constraint firstItem="eRR-yo-aLj" firstAttribute="top" secondItem="SuP-BN-Bbv" secondAttribute="top" id="Oqd-I7-IEX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="SuP-BN-Bbv"/>
                     </view>
                     <navigationItem key="navigationItem" id="kqv-5q-Fxj">
                         <barButtonItem key="backBarButtonItem" title="Back" id="BZf-wI-EOb"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="messagesTableView" destination="eRR-yo-aLj" id="G1W-Eh-gIS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dBU-yq-O8j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="953" y="498"/>
+            <point key="canvasLocation" x="952.5" y="497.53521126760563"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="6K6-vB-9V1">
