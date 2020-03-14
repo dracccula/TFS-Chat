@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59529643241D017300C4B0C2 /* CellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59529642241D017300C4B0C2 /* CellModels.swift */; };
 		597FA273240BF17700F0103F /* ConversationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FA272240BF17700F0103F /* ConversationViewCell.swift */; };
 		597FBF8323FB214800314FF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FBF8223FB214800314FF2 /* AppDelegate.swift */; };
 		597FBF8523FB214800314FF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FBF8423FB214800314FF2 /* SceneDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		59529642241D017300C4B0C2 /* CellModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModels.swift; sourceTree = "<group>"; };
 		597FA272240BF17700F0103F /* ConversationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewCell.swift; sourceTree = "<group>"; };
 		597FBF7F23FB214800314FF2 /* TFS PROJECT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TFS PROJECT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		597FBF8223FB214800314FF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				59AE9D70240DA9A000251278 /* ConversationViewController.swift */,
 				597FA272240BF17700F0103F /* ConversationViewCell.swift */,
 				6A2660B3241B7A2100415915 /* MessageViewCell.swift */,
+				59529642241D017300C4B0C2 /* CellModels.swift */,
 				597FBF8D23FB214D00314FF2 /* LaunchScreen.storyboard */,
 				597FBF9023FB214D00314FF2 /* Info.plist */,
 			);
@@ -169,6 +172,7 @@
 				59AE9D71240DA9A000251278 /* ConversationViewController.swift in Sources */,
 				59B7069323FF24DC00E510FE /* ProfileViewController.swift in Sources */,
 				597FA273240BF17700F0103F /* ConversationViewCell.swift in Sources */,
+				59529643241D017300C4B0C2 /* CellModels.swift in Sources */,
 				597FBF8523FB214800314FF2 /* SceneDelegate.swift in Sources */,
 				6A2660B4241B7A2100415915 /* MessageViewCell.swift in Sources */,
 			);

@@ -11,19 +11,29 @@ import UIKit
 class MessageViewCell: UITableViewCell, ConfigurableView {
     typealias ConfigurationModel = MessageCellModel
     
-    
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var messageText: UILabel!
-    
-    struct MessageCellModel {
-        let id: Int
-        let message: String
-        let date: Date
-        let selfMessage: Bool
-    }
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var trailing: NSLayoutConstraint!
+    @IBOutlet weak var leading: NSLayoutConstraint!
     
     func configure(with model: ConfigurationModel) {
+        messageView.layer.cornerRadius = 10
         messageText.text = model.message
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let dateString = dateFormatter.string(from: model.date)
+        dateLabel.text = dateString
+        
+        if model.isIncoming {
+            messageView.backgroundColor = .lightGray
+            leading.isActive = true
+            trailing.isActive = false
+        } else {
+            messageView.backgroundColor = UIColor.systemBlue
+            leading.isActive = false
+            trailing.isActive = true
+        }
     }
     
 }

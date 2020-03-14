@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C5q-cC-S6j">
-    <device id="retina4_0" orientation="portrait" appearance="dark"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -147,43 +147,62 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="messageCell" id="YDl-kc-m3H" userLabel="messageCell" customClass="MessageViewCell" customModule="TFS_PROJECT" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="393"/>
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="messageCell" id="YDl-kc-m3H" customClass="MessageViewCell" customModule="TFS_PROJECT" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="405.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YDl-kc-m3H" id="uOE-wR-u7G">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="393"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="405.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLz-ob-Zb6" userLabel="messageView">
-                                                    <rect key="frame" x="32" y="16" width="256" height="361"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLz-ob-Zb6" userLabel="messageCell">
+                                                    <rect key="frame" x="72" y="4" width="240" height="397.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQK-xe-0dB" userLabel="Message">
-                                                            <rect key="frame" x="8" y="8" width="240" height="345"/>
+                                                            <rect key="frame" x="8" y="8" width="224" height="365.5"/>
                                                             <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices lacinia urna, eget tincidunt ligula scelerisque sed. Duis facilisis bibendum mauris non posuere. Suspendisse potenti. Vivamus cursus pellentesque orci, id gravida sapien sagittis eget. Integer erat ligula, consequat in condimentum quis, ornare ac quam. Mauris metus est, sagittis ac commodo ac, volutpat a dui. Aenean est arcu, vestibulum fringilla malesuada sit amet, mollis in metus.</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="04:20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMu-cJ-9oh" userLabel="Date">
+                                                            <rect key="frame" x="195.5" y="373.5" width="36.5" height="16"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="SQK-xe-0dB" secondAttribute="trailing" constant="8" id="5Ho-w1-6bF"/>
+                                                        <constraint firstAttribute="bottom" secondItem="oMu-cJ-9oh" secondAttribute="bottom" constant="8" id="NGz-SN-acI"/>
                                                         <constraint firstItem="SQK-xe-0dB" firstAttribute="leading" secondItem="aLz-ob-Zb6" secondAttribute="leading" constant="8" id="P0N-L2-18d"/>
+                                                        <constraint firstAttribute="trailing" secondItem="oMu-cJ-9oh" secondAttribute="trailing" constant="8" id="Q9C-Ii-xWT"/>
+                                                        <constraint firstItem="oMu-cJ-9oh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aLz-ob-Zb6" secondAttribute="leading" constant="8" id="X6v-ZZ-1C5"/>
                                                         <constraint firstItem="SQK-xe-0dB" firstAttribute="top" secondItem="aLz-ob-Zb6" secondAttribute="top" constant="8" id="i1V-Di-DWY"/>
-                                                        <constraint firstAttribute="bottom" secondItem="SQK-xe-0dB" secondAttribute="bottom" constant="8" id="kZv-fw-Ddq"/>
+                                                        <constraint firstItem="oMu-cJ-9oh" firstAttribute="top" secondItem="SQK-xe-0dB" secondAttribute="bottom" id="kZv-fw-Ddq"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="aLz-ob-Zb6" secondAttribute="bottom" constant="16" id="4RI-iS-Q3l"/>
-                                                <constraint firstItem="aLz-ob-Zb6" firstAttribute="top" secondItem="uOE-wR-u7G" secondAttribute="top" constant="16" id="78E-Oq-vn4"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aLz-ob-Zb6" secondAttribute="trailing" constant="32" id="XJw-ZT-wff"/>
-                                                <constraint firstItem="aLz-ob-Zb6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uOE-wR-u7G" secondAttribute="leading" constant="32" id="gH9-oV-cfM"/>
+                                                <constraint firstAttribute="bottom" secondItem="aLz-ob-Zb6" secondAttribute="bottom" constant="4" id="4RI-iS-Q3l"/>
+                                                <constraint firstItem="aLz-ob-Zb6" firstAttribute="top" secondItem="uOE-wR-u7G" secondAttribute="top" constant="4" id="78E-Oq-vn4"/>
+                                                <constraint firstAttribute="trailing" secondItem="aLz-ob-Zb6" secondAttribute="trailing" constant="8" id="gHO-KF-Dhg"/>
+                                                <constraint firstItem="aLz-ob-Zb6" firstAttribute="leading" secondItem="uOE-wR-u7G" secondAttribute="leading" constant="8" id="yYa-AN-JvO"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="yYa-AN-JvO"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="aLz-ob-Zb6" firstAttribute="width" relation="lessThanOrEqual" secondItem="YDl-kc-m3H" secondAttribute="width" multiplier="0.75" priority="900" id="IlB-09-b7q"/>
+                                        </constraints>
                                         <connections>
-                                            <outlet property="messageText" destination="SQK-xe-0dB" id="qWo-dL-GGY"/>
-                                            <outlet property="messageView" destination="aLz-ob-Zb6" id="pes-M0-i1O"/>
+                                            <outlet property="dateLabel" destination="oMu-cJ-9oh" id="YgB-6J-bbP"/>
+                                            <outlet property="leading" destination="yYa-AN-JvO" id="tfz-lG-rj5"/>
+                                            <outlet property="messageText" destination="SQK-xe-0dB" id="STC-lL-7sP"/>
+                                            <outlet property="messageView" destination="aLz-ob-Zb6" id="6Nv-1h-dOX"/>
+                                            <outlet property="trailing" destination="gHO-KF-Dhg" id="Dy5-1G-TMy"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
