@@ -19,36 +19,44 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
 
     @IBOutlet weak var changeProfileImageButton: UIButton!
-    @IBAction func closeAction(_ sender: Any) {
+    @IBOutlet weak var closeButton: UIButton!
+    @IBAction func closeButtonAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    @IBAction func editProfileAction(_ sender: Any) {
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBAction func cancelButtonAction(_ sender: Any) {
+        setProfileImage()
+        disableEditMode()
+    }
+    @IBOutlet weak var saveButton: UIButton!
+    @IBAction func saveButtonAction(_ sender: Any) {
+        disableEditMode()
+        saveProfileImage(image: profileImage.image!)
     }
     @IBOutlet weak var editProfileButton: UIButton!
-    
-    /* На этом этапе еще нет ни самой view, и нет аутлетов
-    из-за этого фатальная ошибка
-    Fatal error: Unexpectedly found nil while unwrapping an Optional value
-    при вызове print("\(#function)  \(editProfileButton.frame)")*/
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    @IBAction func editProfileAction(_ sender: Any) {
+        enableEditMode()
     }
     
-    /* На данном этапе размеры view не такие, какими они будут после вывода на экран.
-     Поэтому, использовать вычисления, основанные на ширине / высоте view, в методе viewDidload не рекомендуется. */
+    var delegate: ImageDataDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(#function) \(editProfileButton.frame)")
+        if #available(iOS 13.0, *) {
+            self.isModalInPresentation = true
+        } else {
+            // Fallback on earlier versions
+        }
         profileImage.makeRounded()
         changeProfileImageButton.layer.cornerRadius =  changeProfileImageButton.frame.height / 2
         imagePicker.delegate = self
+        setProfileImage()
     }
     
-    /* При вызове viewWillAppear, view уже находится в иерархии отображения (view hierarchy) и имеет актуальные размеры, так, что здесь можно производить расчеты, основанные на ширине / высоте view.
-     так как viewDidAppear вызываеться после viewWillAppear у него уже тоже актуальные размеры */
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        print("\(#function) \(editProfileButton.frame)")
+    override func viewWillDisappear(_ animated: Bool) {
+        if let image = self.profileImage.image{
+            delegate?.passImage(image: image)
+        }
     }
     
     // MARK: Showing Action sheet for image chosing
@@ -110,10 +118,61 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     // MARK: imagePickerController
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let image = info[.originalImage] as? UIImage {
-               self.profileImage.image = image
+                self.profileImage.image = image
             }
         self.dismiss(animated: true, completion: nil)
     }
+    
+    // MARK: Save profile image to file
+    func saveProfileImage(image: UIImage) {
+        guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
+            return
+        }
+        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
+            return
+        }
+        do {
+            try data.write(to: directory.appendingPathComponent("profilePicture.png")!)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    // MARK: Read profile image from file
+    func getSavedProfileImage(named: String) -> UIImage? {
+        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
+        }
+        return nil
+    }
+    
+    func setProfileImage(){
+        if let image = getSavedProfileImage(named: "profilePicture") {
+            profileImage.image = image
+        }
+    }
+    
+    // MARK: Enable Edit mode
+    func enableEditMode(){
+        closeButton.isHidden = true
+        cancelButton.isHidden = false
+        saveButton.isHidden = false
+        changeProfileImageButton.isHidden = false
+        editProfileButton.isHidden = true
+    }
+    
+    // MARK: Disable Edit mode
+    func disableEditMode(){
+        closeButton.isHidden = false
+        cancelButton.isHidden = true
+        saveButton.isHidden = true
+        changeProfileImageButton.isHidden = true
+        editProfileButton.isHidden = false
+    }
+}
+
+protocol ImageDataDelegate {
+    func passImage(image: UIImage)
 }
 
 // MARK: Extension which make image rounded

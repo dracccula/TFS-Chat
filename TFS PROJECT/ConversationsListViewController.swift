@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ImageDataDelegate {
     
     @IBOutlet weak var profileButton: UIButton!
     @IBAction func clickAvatarButton(_ sender: Any) {
@@ -91,9 +91,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    func getSavedProfileImage(named: String) -> UIImage? {
+        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
+        }
+        return nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         profileButton.makeRounded()
+        if let image = getSavedProfileImage(named: "profilePicture") {
+            profileButton.setImage(image, for: .normal)
+        }
         onlineConversations = sortArray(source: contactsMessagesArray, isOnline: true)
         offlineConversations = sortArray(source: contactsMessagesArray, isOnline: false)
         conversationsTableView.dataSource = self
@@ -104,6 +114,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         conversationsTableView.reloadData()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if let destination = segue.destination as? ProfileViewController {
+               destination.delegate = self
+           }
+       }
+       
+       func passImage(image: UIImage) {
+           self.profileButton.setImage(image, for: .normal)
+       }
 }
 
 // MARK: Extension which make image rounded

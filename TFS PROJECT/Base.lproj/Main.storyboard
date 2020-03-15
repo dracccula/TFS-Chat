@@ -19,7 +19,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u5L-Nl-xrt">
                                 <rect key="frame" x="0.0" y="44" width="320" height="72"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsl-K9-6TB">
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsl-K9-6TB">
                                         <rect key="frame" x="264" y="16" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="BcH-UY-vk4"/>
@@ -244,23 +244,37 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Close"/>
                                         <connections>
-                                            <action selector="close:" destination="uCI-1j-OEj" eventType="touchUpInside" id="W3P-2S-vz0"/>
-                                            <action selector="closeAction:" destination="OF5-0P-Aci" eventType="touchUpInside" id="tkv-L4-YMt"/>
+                                            <action selector="closeButtonAction:" destination="OF5-0P-Aci" eventType="touchUpInside" id="tkv-L4-YMt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrP-P6-O4o">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qh5-gh-Nxl">
+                                        <rect key="frame" x="16" y="8" width="53" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelButtonAction:" destination="OF5-0P-Aci" eventType="touchUpInside" id="J1J-2V-zo8"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrP-P6-O4o">
                                         <rect key="frame" x="265" y="8" width="39" height="33"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveButtonAction:" destination="OF5-0P-Aci" eventType="touchUpInside" id="oW4-mF-M0E"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="Uue-2J-k6S" firstAttribute="top" secondItem="4PR-6c-Ksa" secondAttribute="top" constant="8" id="0OQ-gM-wtm"/>
+                                    <constraint firstItem="Qh5-gh-Nxl" firstAttribute="leading" secondItem="4PR-6c-Ksa" secondAttribute="leading" constant="16" id="5eN-iE-iM2"/>
+                                    <constraint firstItem="Qh5-gh-Nxl" firstAttribute="top" secondItem="4PR-6c-Ksa" secondAttribute="top" constant="8" id="GE7-EJ-ZjH"/>
+                                    <constraint firstAttribute="bottom" secondItem="Qh5-gh-Nxl" secondAttribute="bottom" constant="8" id="H0s-KC-8EF"/>
                                     <constraint firstItem="lrP-P6-O4o" firstAttribute="top" secondItem="4PR-6c-Ksa" secondAttribute="top" constant="8" id="JN1-Lq-8g1"/>
                                     <constraint firstItem="lrP-P6-O4o" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Uue-2J-k6S" secondAttribute="trailing" constant="8" symbolic="YES" id="KEP-VI-vz3"/>
                                     <constraint firstAttribute="trailing" secondItem="lrP-P6-O4o" secondAttribute="trailing" constant="16" id="SPa-qj-6Vc"/>
                                     <constraint firstAttribute="bottom" secondItem="Uue-2J-k6S" secondAttribute="bottom" constant="8" id="T9I-rT-uwH"/>
+                                    <constraint firstItem="lrP-P6-O4o" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qh5-gh-Nxl" secondAttribute="trailing" constant="8" symbolic="YES" id="c5T-Au-rpA"/>
                                     <constraint firstItem="Uue-2J-k6S" firstAttribute="leading" secondItem="4PR-6c-Ksa" secondAttribute="leading" constant="16" id="sKB-q2-IgD"/>
                                     <constraint firstAttribute="bottom" secondItem="lrP-P6-O4o" secondAttribute="bottom" constant="8" id="zPX-ZW-uhQ"/>
                                 </constraints>
@@ -269,7 +283,7 @@
                                 <rect key="frame" x="0.0" y="49" width="320" height="453"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIA-xF-whk">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="933.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="912"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WiG-9T-B9C" userLabel="Profile Image View">
                                                 <rect key="frame" x="16" y="0.0" width="288" height="288"/>
@@ -280,7 +294,7 @@
                                                             <constraint firstAttribute="width" secondItem="mbi-wh-4Fm" secondAttribute="height" multiplier="1:1" id="AiC-eY-h2O"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiM-Sa-hkn">
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiM-Sa-hkn">
                                                         <rect key="frame" x="208" y="208" width="80" height="80"/>
                                                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -306,7 +320,7 @@
                                                 </constraints>
                                             </view>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rBK-Pz-lFO" userLabel="Profile Info View">
-                                                <rect key="frame" x="16" y="288" width="288" height="645.5"/>
+                                                <rect key="frame" x="16" y="288" width="288" height="624"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Владислав Киреев" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIw-0r-zLP">
                                                         <rect key="frame" x="0.0" y="8" width="250" height="33.5"/>
@@ -315,10 +329,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-Wu-gOl">
-                                                        <rect key="frame" x="0.0" y="49.5" width="288" height="580"/>
+                                                        <rect key="frame" x="0.0" y="49.5" width="288" height="558.5"/>
                                                         <string key="text">• QA Engineer
 
-• Working in Tinkoff about 3.5 years
+• Working in Tinkoff about 3 years
 
 • Participated in 3+ Tinkoff projects
 
@@ -419,13 +433,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="1HO-Yh-V32"/>
                     <connections>
+                        <outlet property="cancelButton" destination="Qh5-gh-Nxl" id="h18-LM-DgI"/>
                         <outlet property="changeProfileImageButton" destination="SiM-Sa-hkn" id="yfW-mo-PAN"/>
+                        <outlet property="closeButton" destination="Uue-2J-k6S" id="TlS-B8-qRp"/>
                         <outlet property="editProfileButton" destination="s7y-qG-pmT" id="9bg-om-2RS"/>
                         <outlet property="profileImage" destination="mbi-wh-4Fm" id="akY-hm-3DO"/>
+                        <outlet property="saveButton" destination="lrP-P6-O4o" id="UGA-fS-U05"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HX9-cn-bGY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="uCI-1j-OEj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="953" y="-205"/>
         </scene>
