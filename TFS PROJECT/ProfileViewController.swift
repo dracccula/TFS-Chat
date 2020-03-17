@@ -33,6 +33,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         disableEditMode()
         saveProfileImage(image: profileImage.image!)
     }
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var aboutTextView: UITextView!
+    
     @IBOutlet weak var editProfileButton: UIButton!
     @IBAction func editProfileAction(_ sender: Any) {
         enableEditMode()
@@ -158,6 +161,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         cancelButton.isHidden = false
         saveButton.isHidden = false
         changeProfileImageButton.isHidden = false
+        nameTextField.isEnabled = true
+        aboutTextView.isEditable = true
         editProfileButton.isHidden = true
     }
     
@@ -167,6 +172,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         cancelButton.isHidden = true
         saveButton.isHidden = true
         changeProfileImageButton.isHidden = true
+        nameTextField.isEnabled = false
+        aboutTextView.isEditable = false
         editProfileButton.isHidden = false
     }
 }

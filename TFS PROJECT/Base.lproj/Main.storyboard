@@ -283,7 +283,7 @@
                                 <rect key="frame" x="0.0" y="49" width="320" height="453"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIA-xF-whk">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="912"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1018"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WiG-9T-B9C" userLabel="Profile Image View">
                                                 <rect key="frame" x="16" y="0.0" width="288" height="288"/>
@@ -320,16 +320,29 @@
                                                 </constraints>
                                             </view>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rBK-Pz-lFO" userLabel="Profile Info View">
-                                                <rect key="frame" x="16" y="288" width="288" height="624"/>
+                                                <rect key="frame" x="16" y="288" width="288" height="730"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Владислав Киреев" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIw-0r-zLP">
-                                                        <rect key="frame" x="0.0" y="8" width="250" height="33.5"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
-                                                        <nil key="textColor"/>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIw-0r-zLP" userLabel="Name Label">
+                                                        <rect key="frame" x="0.0" y="8" width="35.5" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-Wu-gOl">
-                                                        <rect key="frame" x="0.0" y="49.5" width="288" height="558.5"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="leading" contentVerticalAlignment="center" text="Владислав Киреев" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="WlN-nY-S2U" userLabel="Name Text Field">
+                                                        <rect key="frame" x="0.0" y="28" width="250" height="35"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-Wu-gOl" userLabel="About Label">
+                                                        <rect key="frame" x="0.0" y="67" width="36.5" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WmH-tV-exv" userLabel="About Text View">
+                                                        <rect key="frame" x="0.0" y="83" width="288" height="639"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <string key="text">• QA Engineer
 
 • Working in Tinkoff about 3 years
@@ -353,21 +366,26 @@
 • Traveller
 
 • Emo music lover</string>
+                                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <size key="shadowOffset" width="0.0" height="0.0"/>
-                                                    </label>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="TWt-Wu-gOl" firstAttribute="top" secondItem="zIw-0r-zLP" secondAttribute="bottom" constant="8" id="GxF-fk-ezw"/>
-                                                    <constraint firstItem="TWt-Wu-gOl" firstAttribute="leading" secondItem="rBK-Pz-lFO" secondAttribute="leading" id="H7L-p9-PV3"/>
-                                                    <constraint firstItem="zIw-0r-zLP" firstAttribute="leading" secondItem="rBK-Pz-lFO" secondAttribute="leading" id="Tzo-Py-ZS7"/>
-                                                    <constraint firstAttribute="bottom" secondItem="TWt-Wu-gOl" secondAttribute="bottom" constant="16" id="f9G-rd-5Re"/>
-                                                    <constraint firstAttribute="trailing" secondItem="TWt-Wu-gOl" secondAttribute="trailing" id="hff-bx-Ibp"/>
-                                                    <constraint firstItem="zIw-0r-zLP" firstAttribute="top" secondItem="rBK-Pz-lFO" secondAttribute="top" constant="8" id="sHe-Zt-RBK"/>
-                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zIw-0r-zLP" secondAttribute="trailing" constant="20" symbolic="YES" id="utf-Ui-HhL"/>
+                                                    <constraint firstAttribute="trailing" secondItem="WmH-tV-exv" secondAttribute="trailing" id="2zX-9C-Jc4"/>
+                                                    <constraint firstItem="WmH-tV-exv" firstAttribute="leading" secondItem="rBK-Pz-lFO" secondAttribute="leading" id="IJm-D4-Th7"/>
+                                                    <constraint firstItem="WlN-nY-S2U" firstAttribute="top" secondItem="zIw-0r-zLP" secondAttribute="bottom" constant="4" id="LTR-eP-vGu"/>
+                                                    <constraint firstItem="zIw-0r-zLP" firstAttribute="leading" secondItem="rBK-Pz-lFO" secondAttribute="leading" id="RWI-oZ-oap"/>
+                                                    <constraint firstItem="zIw-0r-zLP" firstAttribute="top" secondItem="rBK-Pz-lFO" secondAttribute="top" constant="8" id="X1F-6K-leP"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zIw-0r-zLP" secondAttribute="trailing" id="YMZ-WV-Crx"/>
+                                                    <constraint firstItem="TWt-Wu-gOl" firstAttribute="leading" secondItem="rBK-Pz-lFO" secondAttribute="leading" id="bLR-Bw-GWe"/>
+                                                    <constraint firstItem="TWt-Wu-gOl" firstAttribute="top" secondItem="WlN-nY-S2U" secondAttribute="bottom" constant="4" id="bo4-hd-byN"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TWt-Wu-gOl" secondAttribute="trailing" id="bsp-pn-tDK"/>
+                                                    <constraint firstItem="WmH-tV-exv" firstAttribute="top" secondItem="TWt-Wu-gOl" secondAttribute="bottom" id="c7k-Vd-Ppa"/>
+                                                    <constraint firstAttribute="bottom" secondItem="WmH-tV-exv" secondAttribute="bottom" constant="8" id="gF9-le-Xjp"/>
+                                                    <constraint firstItem="WlN-nY-S2U" firstAttribute="leading" secondItem="rBK-Pz-lFO" secondAttribute="leading" id="gXK-rO-lLe"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WlN-nY-S2U" secondAttribute="trailing" id="hI5-OJ-U7z"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -422,7 +440,7 @@
                             <constraint firstItem="Qt0-U3-lt5" firstAttribute="trailing" secondItem="4PR-6c-Ksa" secondAttribute="trailing" id="BmS-UL-Vj9"/>
                             <constraint firstItem="4PR-6c-Ksa" firstAttribute="leading" secondItem="Qt0-U3-lt5" secondAttribute="leading" id="I4e-ym-MgZ"/>
                             <constraint firstItem="4PR-6c-Ksa" firstAttribute="top" secondItem="Qt0-U3-lt5" secondAttribute="top" id="Muu-Tm-jJj"/>
-                            <constraint firstItem="s7y-qG-pmT" firstAttribute="top" secondItem="OZl-yi-psZ" secondAttribute="bottom" constant="8" id="TN5-ZP-JIL"/>
+                            <constraint firstItem="s7y-qG-pmT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OZl-yi-psZ" secondAttribute="bottom" constant="8" id="TN5-ZP-JIL"/>
                             <constraint firstItem="OZl-yi-psZ" firstAttribute="top" secondItem="4PR-6c-Ksa" secondAttribute="bottom" id="dJ6-yo-1wH"/>
                             <constraint firstItem="s7y-qG-pmT" firstAttribute="leading" secondItem="Qt0-U3-lt5" secondAttribute="leading" constant="16" id="hea-m1-2zI"/>
                             <constraint firstItem="Qt0-U3-lt5" firstAttribute="trailing" secondItem="s7y-qG-pmT" secondAttribute="trailing" constant="16" id="n6l-vz-QAP"/>
@@ -433,10 +451,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="1HO-Yh-V32"/>
                     <connections>
+                        <outlet property="aboutTextView" destination="WmH-tV-exv" id="29M-ij-6jJ"/>
                         <outlet property="cancelButton" destination="Qh5-gh-Nxl" id="h18-LM-DgI"/>
                         <outlet property="changeProfileImageButton" destination="SiM-Sa-hkn" id="yfW-mo-PAN"/>
                         <outlet property="closeButton" destination="Uue-2J-k6S" id="TlS-B8-qRp"/>
                         <outlet property="editProfileButton" destination="s7y-qG-pmT" id="9bg-om-2RS"/>
+                        <outlet property="nameTextField" destination="WlN-nY-S2U" id="0VE-ak-4Ev"/>
                         <outlet property="profileImage" destination="mbi-wh-4Fm" id="akY-hm-3DO"/>
                         <outlet property="saveButton" destination="lrP-P6-O4o" id="UGA-fS-U05"/>
                     </connections>
