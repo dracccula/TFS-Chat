@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		59529643241D017300C4B0C2 /* CellModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59529642241D017300C4B0C2 /* CellModels.swift */; };
+		5953BB422426658B003CEF6A /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5953BB412426658B003CEF6A /* ProfileData.swift */; };
+		5953BB4824268636003CEF6A /* SpinnerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5953BB4724268636003CEF6A /* SpinnerUtils.swift */; };
+		5953BB4A242689D9003CEF6A /* launchscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 5953BB49242689D9003CEF6A /* launchscreen.png */; };
+		5953BB4C24268C87003CEF6A /* GCDDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5953BB4B24268C87003CEF6A /* GCDDataManager.swift */; };
+		5953BB4E24268CAA003CEF6A /* ProfileDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5953BB4D24268CAA003CEF6A /* ProfileDataManager.swift */; };
+		5953BB5024269105003CEF6A /* OperationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5953BB4F24269105003CEF6A /* OperationDataManager.swift */; };
 		597FA273240BF17700F0103F /* ConversationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FA272240BF17700F0103F /* ConversationViewCell.swift */; };
 		597FBF8323FB214800314FF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FBF8223FB214800314FF2 /* AppDelegate.swift */; };
 		597FBF8523FB214800314FF2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FBF8423FB214800314FF2 /* SceneDelegate.swift */; };
@@ -25,6 +31,12 @@
 
 /* Begin PBXFileReference section */
 		59529642241D017300C4B0C2 /* CellModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModels.swift; sourceTree = "<group>"; };
+		5953BB412426658B003CEF6A /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
+		5953BB4724268636003CEF6A /* SpinnerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerUtils.swift; sourceTree = "<group>"; };
+		5953BB49242689D9003CEF6A /* launchscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launchscreen.png; path = Assets.xcassets/launchscreen.png; sourceTree = "<group>"; };
+		5953BB4B24268C87003CEF6A /* GCDDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDDataManager.swift; sourceTree = "<group>"; };
+		5953BB4D24268CAA003CEF6A /* ProfileDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataManager.swift; sourceTree = "<group>"; };
+		5953BB4F24269105003CEF6A /* OperationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationDataManager.swift; sourceTree = "<group>"; };
 		597FA272240BF17700F0103F /* ConversationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewCell.swift; sourceTree = "<group>"; };
 		597FBF7F23FB214800314FF2 /* TFS PROJECT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TFS PROJECT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		597FBF8223FB214800314FF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,9 +66,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5953BB432426659D003CEF6A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				59B7069223FF24DC00E510FE /* ProfileViewController.swift */,
+				5953BB412426658B003CEF6A /* ProfileData.swift */,
+				5953BB4724268636003CEF6A /* SpinnerUtils.swift */,
+				5953BB4B24268C87003CEF6A /* GCDDataManager.swift */,
+				5953BB4D24268CAA003CEF6A /* ProfileDataManager.swift */,
+				5953BB4F24269105003CEF6A /* OperationDataManager.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		597FBF7623FB214800314FF2 = {
 			isa = PBXGroup;
 			children = (
+				5953BB49242689D9003CEF6A /* launchscreen.png */,
 				597FBF9E23FB316900314FF2 /* Debug.xcconfig */,
 				597FBFA023FB32F500314FF2 /* Release.xcconfig */,
 				597FBF9C23FB283100314FF2 /* Assets.xcassets */,
@@ -78,10 +104,10 @@
 		597FBF8123FB214800314FF2 /* TFS PROJECT */ = {
 			isa = PBXGroup;
 			children = (
+				5953BB432426659D003CEF6A /* Profile */,
 				597FBF8223FB214800314FF2 /* AppDelegate.swift */,
 				597FBF8423FB214800314FF2 /* SceneDelegate.swift */,
 				597FBF8623FB214800314FF2 /* ConversationsListViewController.swift */,
-				59B7069223FF24DC00E510FE /* ProfileViewController.swift */,
 				597FBF8823FB214900314FF2 /* Main.storyboard */,
 				59AE9D70240DA9A000251278 /* ConversationViewController.swift */,
 				597FA272240BF17700F0103F /* ConversationViewCell.swift */,
@@ -155,6 +181,7 @@
 				6A3C725D23FFBB590086DD89 /* slr-camera-2-xxl.png in Resources */,
 				597FBF9D23FB283100314FF2 /* Assets.xcassets in Resources */,
 				597FBF9F23FB316900314FF2 /* Debug.xcconfig in Resources */,
+				5953BB4A242689D9003CEF6A /* launchscreen.png in Resources */,
 				6A3C725C23FFBB590086DD89 /* placeholder-user.png in Resources */,
 				597FBF8A23FB214900314FF2 /* Main.storyboard in Resources */,
 			);
@@ -168,11 +195,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				597FBF8723FB214800314FF2 /* ConversationsListViewController.swift in Sources */,
+				5953BB5024269105003CEF6A /* OperationDataManager.swift in Sources */,
 				597FBF8323FB214800314FF2 /* AppDelegate.swift in Sources */,
+				5953BB422426658B003CEF6A /* ProfileData.swift in Sources */,
 				59AE9D71240DA9A000251278 /* ConversationViewController.swift in Sources */,
 				59B7069323FF24DC00E510FE /* ProfileViewController.swift in Sources */,
+				5953BB4E24268CAA003CEF6A /* ProfileDataManager.swift in Sources */,
 				597FA273240BF17700F0103F /* ConversationViewCell.swift in Sources */,
 				59529643241D017300C4B0C2 /* CellModels.swift in Sources */,
+				5953BB4824268636003CEF6A /* SpinnerUtils.swift in Sources */,
+				5953BB4C24268C87003CEF6A /* GCDDataManager.swift in Sources */,
 				597FBF8523FB214800314FF2 /* SceneDelegate.swift in Sources */,
 				6A2660B4241B7A2100415915 /* MessageViewCell.swift in Sources */,
 			);

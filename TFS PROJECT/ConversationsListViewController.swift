@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ImageDataDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InfoDataDelegate {
     
     @IBOutlet weak var profileButton: UIButton!
     @IBAction func clickAvatarButton(_ sender: Any) {
     }
+    @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var conversationsTableView: UITableView!
     enum TableSection: Int {
         case online, offline
@@ -91,18 +92,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-    func getSavedProfileImage(named: String) -> UIImage? {
-        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
-            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
-        }
-        return nil
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         profileButton.makeRounded()
-        if let image = getSavedProfileImage(named: "profilePicture") {
+        if let image = GCDDataManager().getSavedPicture(named: "profilePicture") {
             profileButton.setImage(image, for: .normal)
+        }
+        if let name = GCDDataManager().getSavedText(named: "name") {
+            profileName.text = name
         }
         onlineConversations = sortArray(source: contactsMessagesArray, isOnline: true)
         offlineConversations = sortArray(source: contactsMessagesArray, isOnline: false)
@@ -120,8 +117,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
            }
        }
        
-       func passImage(image: UIImage) {
-           self.profileButton.setImage(image, for: .normal)
+       func passInfo() {
+        if let image = GCDDataManager().getSavedPicture(named: "profilePicture") {
+            profileButton.setImage(image, for: .normal)
+        }
+        self.profileName.text = GCDDataManager().getSavedText(named: "name")
        }
 }
 

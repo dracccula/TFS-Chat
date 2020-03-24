@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIApplicationDelegate {
     
-    @IBOutlet weak var profileImage: UIImageView!
+    
+    @IBOutlet weak var profilePicture: UIImageView!
     let imagePicker = UIImagePickerController()
     @IBAction func changeProfileImageButtonAction(_ sender: UIButton)
     {
@@ -25,23 +25,37 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     @IBOutlet weak var cancelButton: UIButton!
     @IBAction func cancelButtonAction(_ sender: Any) {
-        setProfileImage()
         disableEditMode()
+        loadProfileData(dataManager: self.gcdDataManager)
     }
     @IBOutlet weak var saveButton: UIButton!
     @IBAction func saveButtonAction(_ sender: Any) {
         disableEditMode()
-        saveProfileImage(image: profileImage.image!)
+        saveProfileData(sender: gcdButton)
     }
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nameTextView: UITextView!
     @IBOutlet weak var aboutTextView: UITextView!
     
     @IBOutlet weak var editProfileButton: UIButton!
     @IBAction func editProfileAction(_ sender: Any) {
         enableEditMode()
     }
+    @IBOutlet weak var gcdButton: UIButton!
+    @IBAction func gcdButtonAction(_ sender: Any) {
+        disableEditMode()
+        saveProfileData(sender: gcdButton)
+    }
+    @IBOutlet weak var operationButton: UIButton!
+    @IBAction func operationButtonAction(_ sender: Any) {
+        disableEditMode()
+        saveProfileData(sender: operationButton)
+    }
+    private let gcdDataManager = GCDDataManager()
+    private let operationDataManager = OperationDataManager()
+    var loadedProfileData: ProfileData = ProfileData()
     
-    var delegate: ImageDataDelegate?
+    var delegate: InfoDataDelegate?
+    private let spinner = SpinnerUtils()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,17 +64,29 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         } else {
             // Fallback on earlier versions
         }
-        profileImage.makeRounded()
+        profilePicture.makeRounded()
         changeProfileImageButton.layer.cornerRadius =  changeProfileImageButton.frame.height / 2
         imagePicker.delegate = self
-        setProfileImage()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.hideKeyboardWhenTappedAround()
+        self.loadProfileData(dataManager: self.gcdDataManager)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        if let image = self.profileImage.image{
-            delegate?.passImage(image: image)
-        }
+        delegate?.passInfo()
     }
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+        self.view.frame.origin.y = -250
+    }
+    
+    @objc func keyboardWillHide(sender: NSNotification) {
+        self.view.frame.origin.y = 0
+        self.view.setNeedsLayout()
+    }
+
     
     // MARK: Showing Action sheet for image chosing
     func showActionSheet(_ sender: UIButton) {
@@ -68,13 +94,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
             self.openCamera()
         }))
-
+        
         alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
             self.openGallery()
         }))
-
+        
         alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
-
+        
         switch UIDevice.current.userInterfaceIdiom {
         case .pad:
             alert.popoverPresentationController?.sourceView = sender
@@ -83,7 +109,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         default:
             break
         }
-
+        
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -102,7 +128,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.present(alert, animated: true, completion: nil)
         }
     }
-
+    
     // MARK: openGallery function
     func openGallery() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary){
@@ -119,10 +145,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     // MARK: imagePickerController
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let image = info[.originalImage] as? UIImage {
-                self.profileImage.image = image
-            }
+    private var isUserImageChanged = false
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            self.profilePicture.image = image
+            self.isUserImageChanged = true
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -135,23 +163,86 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             return
         }
         do {
-            try data.write(to: directory.appendingPathComponent("profilePicture.png")!)
+            try data.write(to: directory.appendingPathComponent("profilePicture")!)
         } catch {
             print(error.localizedDescription)
         }
     }
     
-    // MARK: Read profile image from file
-    func getSavedProfileImage(named: String) -> UIImage? {
-        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
-            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
+    // MARK: Save profile data
+    func saveProfileData(sender: UIButton!) {
+        self.spinner.showActivityIndicator(uiView: self.view)
+        
+        let dataManager: ProfileDataManager = sender == gcdButton ? gcdDataManager : operationDataManager
+        
+        let onError = { [weak self] in
+            let alert = UIAlertController(title: "Error", message: "Saving not succeed", preferredStyle: .alert)
+            let retrySaveAction = UIAlertAction(title: "Retry", style: .default) { (action:UIAlertAction!) in
+                alert.dismiss(animated: false)
+                self?.saveProfileData(sender: sender)
+            }
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel)
+            
+            alert.addAction(cancelAction)
+            alert.addAction(retrySaveAction)
+            
+            self?.present(alert, animated: true)
+            self?.spinner.hideActivityIndicator(uiView: self!.view)
         }
-        return nil
+        
+        let completion =  { [weak self] in
+            let alert = UIAlertController(title: "Success", message: "Profile information saved", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel) { UIAlertAction in
+                self?.spinner.hideActivityIndicator(uiView: self!.view)
+                self?.loadProfileData(dataManager: dataManager) {
+                    self?.disableEditMode()
+                }
+                
+            }
+            alert.addAction(cancelAction)
+            
+            self?.present(alert, animated: true)
+        }
+        
+        let profileData = ProfileData()
+        
+        if nameTextView.text != loadedProfileData.name {
+            profileData.name = nameTextView.text
+        }
+
+        if aboutTextView.text != loadedProfileData.about {
+            profileData.about = aboutTextView.text
+        }
+
+        if isUserImageChanged {
+            profileData.picture = profilePicture.image
+        }
+        
+        dataManager.saveProfileData(profileData: profileData, onError: onError, completion: completion)
     }
     
-    func setProfileImage(){
-        if let image = getSavedProfileImage(named: "profilePicture") {
-            profileImage.image = image
+    // MARK: Load profile data
+    private func loadProfileData(dataManager: ProfileDataManager, _ completion: (()->())? = nil) {
+        self.spinner.showActivityIndicator(uiView: self.view)
+        
+        dataManager.readProfileData { [weak self] (profileData) -> Void in
+            if profileData.name == nil {
+                profileData.name = ""
+            }
+            if profileData.about == nil {
+                profileData.about = ""
+            }
+            self?.loadedProfileData = profileData
+            self?.nameTextView.text = profileData.name
+            self?.aboutTextView.text = profileData.about
+            if let image = profileData.picture {
+                self?.profilePicture.image = image
+            } else {
+                self?.profilePicture.image = UIImage(named:"placeholder-user")
+            }
+            
+            self?.spinner.hideActivityIndicator(uiView: self!.view)
+            completion?()
         }
     }
     
@@ -159,27 +250,39 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     func enableEditMode(){
         closeButton.isHidden = true
         cancelButton.isHidden = false
-        saveButton.isHidden = false
+//        saveButton.isHidden = false
         changeProfileImageButton.isHidden = false
-        nameTextField.isEnabled = true
+        nameTextView.isEditable = true
+        nameTextView.layer.borderColor = UIColor.lightGray.cgColor
+        nameTextView.layer.borderWidth = 1.0
+        nameTextView.layer.cornerRadius = 5
         aboutTextView.isEditable = true
+        aboutTextView.layer.borderColor = UIColor.lightGray.cgColor
+        aboutTextView.layer.borderWidth = 1.0
+        aboutTextView.layer.cornerRadius = 5
         editProfileButton.isHidden = true
+        gcdButton.isHidden = false
+        operationButton.isHidden = false
     }
     
     // MARK: Disable Edit mode
     func disableEditMode(){
         closeButton.isHidden = false
         cancelButton.isHidden = true
-        saveButton.isHidden = true
+//        saveButton.isHidden = true
         changeProfileImageButton.isHidden = true
-        nameTextField.isEnabled = false
+        nameTextView.isEditable = false
+        nameTextView.layer.borderWidth = 0
         aboutTextView.isEditable = false
+        aboutTextView.layer.borderWidth = 0
         editProfileButton.isHidden = false
+        gcdButton.isHidden = true
+        operationButton.isHidden = true
     }
 }
 
-protocol ImageDataDelegate {
-    func passImage(image: UIImage)
+protocol InfoDataDelegate {
+    func passInfo()
 }
 
 // MARK: Extension which make image rounded
@@ -203,7 +306,7 @@ extension UIImageView {
             return layer.borderWidth
         }
     }
-
+    
     @IBInspectable var cornerRadius: CGFloat {
         set {
             layer.cornerRadius = newValue
@@ -212,7 +315,7 @@ extension UIImageView {
             return layer.cornerRadius
         }
     }
-
+    
     @IBInspectable var borderColor: UIColor? {
         set {
             guard let uiColor = newValue else { return }
