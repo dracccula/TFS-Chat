@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIApplicationDelegate {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIApplicationDelegate, UITextViewDelegate {
     
     
     @IBOutlet weak var profilePicture: UIImageView!
@@ -145,11 +145,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     // MARK: imagePickerController
-    private var isUserImageChanged = false
+    private var isUserPictureChanged = false
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             self.profilePicture.image = image
-            self.isUserImageChanged = true
+            self.isUserPictureChanged = true
+            self.profileDataChanged()
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -167,6 +168,36 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    // MARK: Enable button function
+    private func setEnableButton(button: UIButton, enable: Bool) {
+        if enable {
+            button.isEnabled = true
+            button.alpha = 1
+        } else {
+            button.isEnabled = false
+            button.alpha = 0.5
+        }
+    }
+    
+    
+    // MARK: Profile data change check
+    @objc func profileDataChanged() {
+        if  nameTextView.text == loadedProfileData.name &&
+            aboutTextView.text == (loadedProfileData.about ?? "") &&
+            !isUserPictureChanged
+        {
+            self.setEnableButton(button: gcdButton, enable: false)
+            self.setEnableButton(button: operationButton, enable: false)
+        } else {
+            self.setEnableButton(button: gcdButton, enable: true)
+            self.setEnableButton(button: operationButton, enable: true)
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        self.profileDataChanged()
     }
     
     // MARK: Save profile data
@@ -214,7 +245,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             profileData.about = aboutTextView.text
         }
 
-        if isUserImageChanged {
+        if isUserPictureChanged {
             profileData.picture = profilePicture.image
         }
         
@@ -256,13 +287,16 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         nameTextView.layer.borderColor = UIColor.lightGray.cgColor
         nameTextView.layer.borderWidth = 1.0
         nameTextView.layer.cornerRadius = 5
+        nameTextView.delegate = self
         aboutTextView.isEditable = true
         aboutTextView.layer.borderColor = UIColor.lightGray.cgColor
         aboutTextView.layer.borderWidth = 1.0
         aboutTextView.layer.cornerRadius = 5
+        aboutTextView.delegate = self
         editProfileButton.isHidden = true
         gcdButton.isHidden = false
         operationButton.isHidden = false
+        self.profileDataChanged()
     }
     
     // MARK: Disable Edit mode
