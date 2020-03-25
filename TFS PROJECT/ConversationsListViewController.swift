@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InfoDataDelegate {
     
     @IBOutlet weak var profileButton: UIButton!
     @IBAction func clickAvatarButton(_ sender: Any) {
     }
+    @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var conversationsTableView: UITableView!
     enum TableSection: Int {
         case online, offline
@@ -94,6 +95,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         profileButton.makeRounded()
+        if let image = GCDDataManager().getSavedPicture(named: "profilePicture") {
+            profileButton.setImage(image, for: .normal)
+        }
+        if let name = GCDDataManager().getSavedText(named: "name") {
+            profileName.text = name
+        }
         onlineConversations = sortArray(source: contactsMessagesArray, isOnline: true)
         offlineConversations = sortArray(source: contactsMessagesArray, isOnline: false)
         conversationsTableView.dataSource = self
@@ -104,6 +111,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         conversationsTableView.reloadData()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if let destination = segue.destination as? ProfileViewController {
+               destination.delegate = self
+           }
+       }
+       
+       func passInfo() {
+        if let image = GCDDataManager().getSavedPicture(named: "profilePicture") {
+            profileButton.setImage(image, for: .normal)
+        }
+        self.profileName.text = GCDDataManager().getSavedText(named: "name")
+       }
 }
 
 // MARK: Extension which make image rounded
