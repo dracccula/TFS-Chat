@@ -21,7 +21,6 @@
 		597FBF8A23FB214900314FF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597FBF8823FB214900314FF2 /* Main.storyboard */; };
 		597FBF8F23FB214D00314FF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597FBF8D23FB214D00314FF2 /* LaunchScreen.storyboard */; };
 		597FBF9D23FB283100314FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 597FBF9C23FB283100314FF2 /* Assets.xcassets */; };
-		597FBF9F23FB316900314FF2 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 597FBF9E23FB316900314FF2 /* Debug.xcconfig */; };
 		59AE9D71240DA9A000251278 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE9D70240DA9A000251278 /* ConversationViewController.swift */; };
 		59B7069323FF24DC00E510FE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B7069223FF24DC00E510FE /* ProfileViewController.swift */; };
 		6A2660B4241B7A2100415915 /* MessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2660B3241B7A2100415915 /* MessageViewCell.swift */; };
@@ -38,7 +37,7 @@
 		5953BB4D24268CAA003CEF6A /* ProfileDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataManager.swift; sourceTree = "<group>"; };
 		5953BB4F24269105003CEF6A /* OperationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationDataManager.swift; sourceTree = "<group>"; };
 		597FA272240BF17700F0103F /* ConversationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewCell.swift; sourceTree = "<group>"; };
-		597FBF7F23FB214800314FF2 /* TFS PROJECT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TFS PROJECT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		597FBF7F23FB214800314FF2 /* Tinkoff Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinkoff Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		597FBF8223FB214800314FF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		597FBF8423FB214800314FF2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		597FBF8623FB214800314FF2 /* ConversationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
@@ -88,7 +87,7 @@
 				597FBF9C23FB283100314FF2 /* Assets.xcassets */,
 				6A3C725A23FFBB580086DD89 /* placeholder-user.png */,
 				6A3C725B23FFBB590086DD89 /* slr-camera-2-xxl.png */,
-				597FBF8123FB214800314FF2 /* TFS PROJECT */,
+				597FBF8123FB214800314FF2 /* TFS Chat */,
 				597FBF8023FB214800314FF2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,12 +95,12 @@
 		597FBF8023FB214800314FF2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				597FBF7F23FB214800314FF2 /* TFS PROJECT.app */,
+				597FBF7F23FB214800314FF2 /* Tinkoff Chat.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		597FBF8123FB214800314FF2 /* TFS PROJECT */ = {
+		597FBF8123FB214800314FF2 /* TFS Chat */ = {
 			isa = PBXGroup;
 			children = (
 				5953BB432426659D003CEF6A /* Profile */,
@@ -116,15 +115,15 @@
 				597FBF8D23FB214D00314FF2 /* LaunchScreen.storyboard */,
 				597FBF9023FB214D00314FF2 /* Info.plist */,
 			);
-			path = "TFS PROJECT";
+			path = "TFS Chat";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		597FBF7E23FB214800314FF2 /* TFS PROJECT */ = {
+		597FBF7E23FB214800314FF2 /* TFS Chat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 597FBF9323FB214D00314FF2 /* Build configuration list for PBXNativeTarget "TFS PROJECT" */;
+			buildConfigurationList = 597FBF9323FB214D00314FF2 /* Build configuration list for PBXNativeTarget "TFS Chat" */;
 			buildPhases = (
 				597FBF7B23FB214800314FF2 /* Sources */,
 				597FBF7C23FB214800314FF2 /* Frameworks */,
@@ -134,9 +133,9 @@
 			);
 			dependencies = (
 			);
-			name = "TFS PROJECT";
+			name = "TFS Chat";
 			productName = "TFS PROJECT";
-			productReference = 597FBF7F23FB214800314FF2 /* TFS PROJECT.app */;
+			productReference = 597FBF7F23FB214800314FF2 /* Tinkoff Chat.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -146,7 +145,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = VK;
 				TargetAttributes = {
 					597FBF7E23FB214800314FF2 = {
@@ -154,7 +153,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 597FBF7A23FB214800314FF2 /* Build configuration list for PBXProject "TFS PROJECT" */;
+			buildConfigurationList = 597FBF7A23FB214800314FF2 /* Build configuration list for PBXProject "TFS Chat" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -167,7 +166,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				597FBF7E23FB214800314FF2 /* TFS PROJECT */,
+				597FBF7E23FB214800314FF2 /* TFS Chat */,
 			);
 		};
 /* End PBXProject section */
@@ -180,7 +179,6 @@
 				597FBF8F23FB214D00314FF2 /* LaunchScreen.storyboard in Resources */,
 				6A3C725D23FFBB590086DD89 /* slr-camera-2-xxl.png in Resources */,
 				597FBF9D23FB283100314FF2 /* Assets.xcassets in Resources */,
-				597FBF9F23FB316900314FF2 /* Debug.xcconfig in Resources */,
 				5953BB4A242689D9003CEF6A /* launchscreen.png in Resources */,
 				6A3C725C23FFBB590086DD89 /* placeholder-user.png in Resources */,
 				597FBF8A23FB214900314FF2 /* Main.storyboard in Resources */,
@@ -358,14 +356,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDebug;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H5WS732HQD;
-				INFOPLIST_FILE = "TFS PROJECT/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/TFS Chat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.tcsbank.TinkoffChat.debug;
+				PRODUCT_NAME = "Tinkoff Chat";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -378,14 +376,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H5WS732HQD;
-				INFOPLIST_FILE = "TFS PROJECT/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/TFS Chat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.tcsbank.TinkoffChat.release;
+				PRODUCT_NAME = "Tinkoff Chat";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -394,7 +392,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		597FBF7A23FB214800314FF2 /* Build configuration list for PBXProject "TFS PROJECT" */ = {
+		597FBF7A23FB214800314FF2 /* Build configuration list for PBXProject "TFS Chat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				597FBF9123FB214D00314FF2 /* Debug */,
@@ -403,7 +401,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		597FBF9323FB214D00314FF2 /* Build configuration list for PBXNativeTarget "TFS PROJECT" */ = {
+		597FBF9323FB214D00314FF2 /* Build configuration list for PBXNativeTarget "TFS Chat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				597FBF9423FB214D00314FF2 /* Debug */,

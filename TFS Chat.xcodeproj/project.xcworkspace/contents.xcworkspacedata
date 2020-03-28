@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:TFS PROJECT.xcodeproj">
+      location = "self:/Users/dracccula/XCode Projects/TFS-PROJECT/TFS Chat.xcodeproj">
    </FileRef>
 </Workspace>
