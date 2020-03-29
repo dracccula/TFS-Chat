@@ -11,5 +11,6 @@
 
 // App Settings
 APP_NAME = TFS Chat
-APP_BUNDLE_ID = ru.tcsbank.TinkoffChat.RELEASE
-PRODUCT_BUNDLE_IDENTIFIER = ru.tcsbank.TinkoffChat.RELEASE
+APP_BUNDLE_ID = ru.tcsbank.TinkoffChat
+PRODUCT_BUNDLE_IDENTIFIER = ru.tcsbank.TinkoffChat
+#include "Pods/Target Support Files/Pods-TFS Chat/Pods-TFS Chat.release.xcconfig"

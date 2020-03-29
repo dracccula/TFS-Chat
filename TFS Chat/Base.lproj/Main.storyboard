@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C5q-cC-S6j">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C5q-cC-S6j">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +11,7 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="Main View Controller" customClass="ViewController" customModule="TFS_PROJECT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Main View Controller" customClass="ViewController" customModule="Tinkoff_Chat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,7 +52,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MAP-0c-a9x">
                                 <rect key="frame" x="0.0" y="116" width="320" height="452"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="conversationCell" id="Jlb-2D-xSI" customClass="ConversationViewCell" customModule="TFS_PROJECT" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="channelCell" id="Jlb-2D-xSI" customClass="ChannelViewCell" customModule="Tinkoff_Chat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jlb-2D-xSI" id="qDk-ja-Dba">
@@ -127,7 +127,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tinkoff Chat" id="PeA-cQ-FFB"/>
                     <connections>
-                        <outlet property="conversationsTableView" destination="MAP-0c-a9x" id="CRz-Vy-Rdc"/>
+                        <outlet property="channelsTableView" destination="MAP-0c-a9x" id="CRz-Vy-Rdc"/>
                         <outlet property="profileButton" destination="zsl-K9-6TB" id="T5L-5Q-7Rq"/>
                         <outlet property="profileName" destination="LzJ-ac-lgG" id="lbi-lh-Zqu"/>
                     </connections>
@@ -139,7 +139,7 @@
         <!--ConversationViewController-->
         <scene sceneID="zqH-cg-ygt">
             <objects>
-                <viewController storyboardIdentifier="ConversationViewController" id="duX-zf-QkK" userLabel="ConversationViewController" customClass="ConversationViewController" customModule="TFS_PROJECT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConversationViewController" id="duX-zf-QkK" userLabel="ConversationViewController" customClass="ConversationViewController" customModule="Tinkoff_Chat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yKx-Mj-7Ds">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,7 +148,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="messageCell" id="YDl-kc-m3H" customClass="MessageViewCell" customModule="TFS_PROJECT" customModuleProvider="target">
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="messageCell" id="YDl-kc-m3H" customClass="MessageViewCell" customModule="Tinkoff_Chat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="405.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YDl-kc-m3H" id="uOE-wR-u7G">
@@ -232,7 +232,7 @@
         <!--Profile View Controller-->
         <scene sceneID="6K6-vB-9V1">
             <objects>
-                <viewController id="OF5-0P-Aci" userLabel="Profile View Controller" customClass="ProfileViewController" customModule="TFS_PROJECT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OF5-0P-Aci" userLabel="Profile View Controller" customClass="ProfileViewController" customModule="Tinkoff_Chat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Z8-7y-X6L">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

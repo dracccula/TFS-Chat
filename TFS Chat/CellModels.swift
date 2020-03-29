@@ -22,3 +22,10 @@ struct MessageCellModel {
     let date: Date
     let isIncoming: Bool
 }
+
+struct ChannelCellModel {
+    let identifier: String?
+    let name: String?
+    let lastMessage: String?
+    let lastActivity: Date
+}
