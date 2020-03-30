@@ -7,15 +7,6 @@
 //
 import Foundation
 
-struct ConversationCellModel {
-    let id: Int
-    let name: String
-    let message: String?
-    let date: Date
-    let isOnline: Bool
-    let hasUnreadMessages: Bool
-}
-
 struct MessageCellModel {
     let id: Int
     let message: String
@@ -23,9 +14,16 @@ struct MessageCellModel {
     let isIncoming: Bool
 }
 
-struct ChannelCellModel {
+struct Channel {
     let identifier: String?
     let name: String?
     let lastMessage: String?
-    let lastActivity: Date
+    let lastActivity: Date?
+}
+
+struct Message {
+    let content: String
+    let created: Date
+    let senderId: String
+    let senderName: String
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConversationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ChannelViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var messagesTableView: UITableView!
     
     // MARK: Messages data stub

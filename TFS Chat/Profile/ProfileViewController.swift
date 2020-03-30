@@ -188,9 +188,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             aboutTextView.text == (loadedProfileData.about ?? "") &&
             !isUserPictureChanged
         {
+            self.setEnableButton(button: saveButton, enable: false)
             self.setEnableButton(button: gcdButton, enable: false)
             self.setEnableButton(button: operationButton, enable: false)
         } else {
+            self.setEnableButton(button: saveButton, enable: true)
             self.setEnableButton(button: gcdButton, enable: true)
             self.setEnableButton(button: operationButton, enable: true)
         }
@@ -281,7 +283,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     func enableEditMode(){
         closeButton.isHidden = true
         cancelButton.isHidden = false
-//        saveButton.isHidden = false
+        saveButton.isHidden = false
         changeProfileImageButton.isHidden = false
         nameTextView.isEditable = true
         nameTextView.layer.borderColor = UIColor.lightGray.cgColor
@@ -294,8 +296,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         aboutTextView.layer.cornerRadius = 5
         aboutTextView.delegate = self
         editProfileButton.isHidden = true
-        gcdButton.isHidden = false
-        operationButton.isHidden = false
+//        gcdButton.isHidden = false
+//        operationButton.isHidden = false
         self.profileDataChanged()
     }
     
@@ -303,15 +305,15 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     func disableEditMode(){
         closeButton.isHidden = false
         cancelButton.isHidden = true
-//        saveButton.isHidden = true
+        saveButton.isHidden = true
         changeProfileImageButton.isHidden = true
         nameTextView.isEditable = false
         nameTextView.layer.borderWidth = 0
         aboutTextView.isEditable = false
         aboutTextView.layer.borderWidth = 0
         editProfileButton.isHidden = false
-        gcdButton.isHidden = true
-        operationButton.isHidden = true
+//        gcdButton.isHidden = true
+//        operationButton.isHidden = true
     }
 }
 
