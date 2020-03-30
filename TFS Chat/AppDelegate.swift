@@ -11,7 +11,8 @@ import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-var window: UIWindow?
+    var window: UIWindow?
+    lazy var db = Firestore.firestore()
     
     //MARK: Debug configuration check
     #if DEBUG

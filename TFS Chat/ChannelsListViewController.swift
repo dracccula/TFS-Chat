@@ -25,8 +25,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var onlineChannelsArray: [Channel] = []
     var historyChannelsArray: [Channel] = []
     
-    private lazy var db = Firestore.firestore()
-    private lazy var reference = db.collection("channels")
+    let app = UIApplication.shared.delegate as! AppDelegate
+    private lazy var reference = app.db.collection("channels")
     
     func getSortedChannelsArrays(source: [Channel]){
         source.forEach { channel in
@@ -45,6 +45,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     private func getChannels(){
         spinner.showActivityIndicator(uiView: self.view)
         DispatchQueue.main.async {
+            self.onlineChannelsArray = []
+            self.historyChannelsArray = []
             self.reference.addSnapshotListener { snapshot, error in
                 snapshot!.documents.forEach { data in
                     let identifier = data.documentID
@@ -106,17 +108,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         case 0:
             let name = onlineChannelsArray[indexPath.row].name
             vc.title = name
+            vc.channel = onlineChannelsArray[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
-            print(onlineChannelsArray[indexPath.row].lastActivity ?? "nil")
+            print(onlineChannelsArray[indexPath.row].lastActivity ?? "no date")
             print(Date())
             print(Date().addingTimeInterval(-600))
+            print(onlineChannelsArray[indexPath.row].identifier ?? "no id")
         case 1:
             let name = historyChannelsArray[indexPath.row].name
             vc.title = name
+            vc.channel = historyChannelsArray[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
-            print(historyChannelsArray[indexPath.row].lastActivity ?? "nil")
+            print(historyChannelsArray[indexPath.row].lastActivity ?? "no date")
             print(Date())
             print(Date().addingTimeInterval(-600))
+            print(historyChannelsArray[indexPath.row].identifier ?? "no id")
         default:
             print("Error")
         }
@@ -136,8 +142,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         channelsTableView.delegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        channelsTableView.reloadData()
+    override func viewDidAppear(_ animated: Bool) {
+        getChannels()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

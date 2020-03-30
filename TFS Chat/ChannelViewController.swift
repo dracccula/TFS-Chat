@@ -7,69 +7,96 @@
 //
 
 import UIKit
+import Firebase
 
-class ChannelViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ChannelViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     @IBOutlet weak var messagesTableView: UITableView!
+    @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var sendButton: UIButton!
+    @IBAction func sendButtonAction(_ sender: Any) {
+        sendMessage()
+        getMessages()
+    }
     
-    // MARK: Messages data stub
-    var messageArray : [MessageCellModel] = [MessageCellModel(id: 1, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: false),
-        MessageCellModel(id: 2, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices lacinia urna, eget tincidunt ligula scelerisque sed.", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: false),
-        MessageCellModel(id: 3, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices lacinia urna, eget tincidunt ligula scelerisque sed. Duis facilisis bibendum mauris non posuere.", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: true),
-        MessageCellModel(id: 4, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: true),
-        MessageCellModel(id: 5, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices lacinia urna, eget tincidunt ligula scelerisque sed.", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: false),
-        MessageCellModel(id: 6, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices lacinia urna, eget tincidunt ligula scelerisque sed. Duis facilisis bibendum mauris non posuere.", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: true),
-        MessageCellModel(id: 7, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: false),
-        MessageCellModel(id: 8, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices lacinia urna, eget tincidunt ligula scelerisque sed.", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: false),
-        MessageCellModel(id: 9, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices lacinia urna, eget tincidunt ligula scelerisque sed. Duis facilisis bibendum mauris non posuere.", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: true),
-        MessageCellModel(id: 10, message: "Lorem", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: true),
-        MessageCellModel(id: 11, message: "ipsum", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: true),
-        MessageCellModel(id: 12, message: "dolor", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: false),
-        MessageCellModel(id: 13, message: "sit", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: true),
-        MessageCellModel(id: 14, message: "amet", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: false),
-        MessageCellModel(id: 15, message: "consectetur", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: false),
-        MessageCellModel(id: 16, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: false),
-        MessageCellModel(id: 17, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices lacinia urna, eget tincidunt ligula scelerisque sed.", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: false),
-        MessageCellModel(id: 18, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices lacinia urna, eget tincidunt ligula scelerisque sed. Duis facilisis bibendum mauris non posuere.", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: true),
-        MessageCellModel(id: 19, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: true),
-        MessageCellModel(id: 20, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices lacinia urna, eget tincidunt ligula scelerisque sed.", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: false),
-        MessageCellModel(id: 21, message: "Lorem", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: true),
-        MessageCellModel(id: 22, message: "ipsum", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: true),
-        MessageCellModel(id: 23, message: "dolor", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: false),
-        MessageCellModel(id: 24, message: "sit", date: Date.init(timeIntervalSince1970: 1583589958), isIncoming: true),]
+    private let spinner = SpinnerUtils()
+    var channel: Channel?
+    let app = UIApplication.shared.delegate as! AppDelegate
     
+    private lazy var reference: CollectionReference = {
+    guard let channelIdentifier = channel?.identifier else { fatalError() }
+        return app.db.collection("channels").document(channelIdentifier).collection("messages")
+    }()
+    
+    var messagesArray : [Message] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messageArray.count
+        return messagesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        switch messageArray[indexPath.row].isIncoming {
-        case true:
-            let cell = messagesTableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageViewCell
-            cell.configure(with: messageArray[indexPath.row])
-            return cell
-        case false:
-            let cell = messagesTableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageViewCell
-            cell.configure(with: messageArray[indexPath.row])
-            return cell
+        let cell = messagesTableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageViewCell
+        cell.configure(with: messagesArray[indexPath.row])
+        return cell
+    }
+    
+//    //MARK: Function that scroll to bottom
+//    func scrollToBottom(){
+//        DispatchQueue.main.async {
+//            let indexPath = IndexPath(
+//                row: self.messagesTableView.numberOfRows(inSection:  self.messagesTableView.numberOfSections - 1) - 1,
+//                section: self.messagesTableView.numberOfSections - 1)
+//            self.messagesTableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+//        }
+//    }
+    
+    func getMessages() {
+        spinner.showActivityIndicator(uiView: self.view)
+        DispatchQueue.main.async {
+            self.reference.addSnapshotListener { (snapshot, error) in
+                snapshot?.documents.forEach { data in
+                    let senderID = data.data()["senderID"] as? String
+                    let senderName = data.data()["senderName"] as? String
+                    let content = data.data()["content"] as? String
+                    let created = data.data()["created"] as? Timestamp
+                    print("\(senderID ?? "noId"), \(senderName ?? "noName"), \(content ?? "empty"), \(created?.dateValue() ?? Date())")
+                    self.messagesArray.append(Message(senderId: senderID, senderName: senderName, content: content, created: created?.dateValue()))
+                }
+                self.messagesArray.reverse()
+            }
+            self.spinner.hideActivityIndicator(uiView: self.view)
+            self.messagesTableView.reloadData()
         }
     }
     
-    //MARK: Function that scroll to bottom
-    func scrollToBottom(){
-        DispatchQueue.main.async {
-            let indexPath = IndexPath(
-                row: self.messagesTableView.numberOfRows(inSection:  self.messagesTableView.numberOfSections - 1) - 1,
-                section: self.messagesTableView.numberOfSections - 1)
-            self.messagesTableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
-        }
+    func sendMessage() {
+        sendButton.isEnabled = false
+        reference.addDocument(data: Message(senderId: "VK", senderName: "VK", content: messageTextField.text, created: Date()).toDict)
+        sendButton.isEnabled = true
+        messageTextField.text = nil
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getMessages()
         messagesTableView.delegate = self
         messagesTableView.dataSource = self
-        scrollToBottom()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        messagesTableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        messagesTableView.reloadData()
+    }
+}
+
+extension Message {
+    var toDict: [String: Any] {
+        return ["content": content ?? "",
+                "created": Timestamp(date: created!),
+                "senderID": senderId!,
+                "senderName": senderName!]
+         
     }
 }

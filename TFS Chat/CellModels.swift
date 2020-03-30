@@ -22,8 +22,8 @@ struct Channel {
 }
 
 struct Message {
-    let content: String
-    let created: Date
-    let senderId: String
-    let senderName: String
+    let senderId: String?
+    let senderName: String?
+    let content: String?
+    let created: Date?
 }
