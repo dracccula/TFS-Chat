@@ -50,8 +50,9 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
 //    }
     
     func getMessages() {
-        spinner.showActivityIndicator(uiView: self.view)
+        messagesArray = []
         DispatchQueue.main.async {
+            self.spinner.showActivityIndicator(uiView: self.view)
             self.reference.addSnapshotListener { (snapshot, error) in
                 snapshot?.documents.forEach { data in
                     let senderID = data.data()["senderID"] as? String
@@ -61,10 +62,16 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
                     print("\(senderID ?? "noId"), \(senderName ?? "noName"), \(content ?? "empty"), \(created?.dateValue() ?? Date())")
                     self.messagesArray.append(Message(senderId: senderID, senderName: senderName, content: content, created: created?.dateValue()))
                 }
-                self.messagesArray.reverse()
+                self.refreshUI()
+                self.spinner.hideActivityIndicator(uiView: self.view)
             }
-            self.spinner.hideActivityIndicator(uiView: self.view)
+        }
+    }
+    
+    func refreshUI() {
+        DispatchQueue.main.async {
             self.messagesTableView.reloadData()
+            print("self.messagesTableView.reloadData()")
         }
     }
     

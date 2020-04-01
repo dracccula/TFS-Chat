@@ -59,7 +59,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-user.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Pg-Z0-lfy">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="channel-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Pg-Z0-lfy">
                                                     <rect key="frame" x="16" y="16" width="33" height="33"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="5Pg-Z0-lfy" secondAttribute="height" multiplier="1:1" id="6MZ-lt-gKk"/>
@@ -125,7 +125,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Tinkoff Chat" id="PeA-cQ-FFB"/>
+                    <navigationItem key="navigationItem" title="Tinkoff Chat" id="PeA-cQ-FFB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ceU-hj-DkB">
+                            <connections>
+                                <action selector="addChannelButton:" destination="BYZ-38-t0r" id="zuC-9P-AMh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="channelsTableView" destination="MAP-0c-a9x" id="CRz-Vy-Rdc"/>
                         <outlet property="profileButton" destination="zsl-K9-6TB" id="T5L-5Q-7Rq"/>
@@ -561,6 +567,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="channel-icon.png" width="900" height="900"/>
         <image name="placeholder-user.png" width="600" height="600"/>
         <image name="slr-camera-2-xxl.png" width="256" height="256"/>
     </resources>

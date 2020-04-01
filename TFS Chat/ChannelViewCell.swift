@@ -31,14 +31,14 @@ class ChannelViewCell: UITableViewCell {
 
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        profileImage.layer.borderWidth = 1
-        profileImage.layer.masksToBounds = false
-        profileImage.layer.borderColor = UIColor.gray.cgColor
-        profileImage.layer.cornerRadius = profileImage.frame.height / 2
-        profileImage.clipsToBounds = true
-    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        profileImage.layer.borderWidth = 1
+//        profileImage.layer.masksToBounds = false
+//        profileImage.layer.borderColor = UIColor.gray.cgColor
+//        profileImage.layer.cornerRadius = profileImage.frame.height / 2
+//        profileImage.clipsToBounds = true
+//    }
     
     func configure(with model: ChannelViewCell.ConfigurationModel) {
         nameLabel.text = model.name

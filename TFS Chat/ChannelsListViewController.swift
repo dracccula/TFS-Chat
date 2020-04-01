@@ -11,6 +11,9 @@ import Firebase
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, InfoDataDelegate {
     
+    @IBAction func addChannelButton(_ sender: Any) {
+        showAlertToAddChannel()
+    }
     @IBOutlet weak var profileButton: UIButton!
     @IBAction func clickAvatarButton(_ sender: Any) {
     }
@@ -29,6 +32,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     private lazy var reference = app.db.collection("channels")
     
     func getSortedChannelsArrays(source: [Channel]){
+        onlineChannelsArray = []
+        historyChannelsArray = []
         source.forEach { channel in
             if channel.lastActivity != nil {
                 if channel.lastActivity! > Date().addingTimeInterval(-600) {
@@ -43,10 +48,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     private func getChannels(){
+        channelsArray = []
         spinner.showActivityIndicator(uiView: self.view)
         DispatchQueue.main.async {
-            self.onlineChannelsArray = []
-            self.historyChannelsArray = []
             self.reference.addSnapshotListener { snapshot, error in
                 snapshot!.documents.forEach { data in
                     let identifier = data.documentID
@@ -59,6 +63,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.getSortedChannelsArrays(source: self.channelsArray)
                 self.channelsTableView.reloadData()
             }
+            self.spinner.hideActivityIndicator(uiView: self.view)
+        }
+    }
+    
+    private func showAlertToAddChannel() {
+        let alert = UIAlertController(title: "Add new channel", message: "Enter a channel name", preferredStyle: .alert)
+        alert.addTextField()
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            self.addChannel(channelName: textField?.text ?? "")
+        }))
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func addChannel(channelName: String) {
+        DispatchQueue.main.async {
+            self.spinner.showActivityIndicator(uiView: self.view)
+            self.reference.addDocument(data: Channel(identifier: nil, name: channelName, lastMessage: "", lastActivity: Date()).toDict)
+            self.channelsTableView.reloadData()
             self.spinner.hideActivityIndicator(uiView: self.view)
         }
     }
@@ -141,10 +165,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         channelsTableView.dataSource = self
         channelsTableView.delegate = self
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        getChannels()
-    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
            if let destination = segue.destination as? ProfileViewController {
@@ -168,5 +188,15 @@ extension UIButton {
         self.layer.borderColor = UIColor.gray.cgColor
         self.layer.cornerRadius = self.frame.height / 2
         self.clipsToBounds = true
+    }
+}
+
+extension Channel {
+    var toDict: [String: Any] {
+        return ["identifier": identifier ?? "",
+                "lastActivity": Timestamp(date: lastActivity!),
+                "name": name!,
+                "lastMessage": lastMessage!]
+         
     }
 }

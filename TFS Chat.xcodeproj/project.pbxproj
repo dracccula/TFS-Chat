@@ -25,6 +25,7 @@
 		597FBF9D23FB283100314FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 597FBF9C23FB283100314FF2 /* Assets.xcassets */; };
 		59AE9D71240DA9A000251278 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE9D70240DA9A000251278 /* ChannelViewController.swift */; };
 		59B7069323FF24DC00E510FE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B7069223FF24DC00E510FE /* ProfileViewController.swift */; };
+		59F0B0082434F51B0089907C /* channel-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 59F0B0072434F51B0089907C /* channel-icon.png */; };
 		6A2660B4241B7A2100415915 /* MessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2660B3241B7A2100415915 /* MessageViewCell.swift */; };
 		6A3C725C23FFBB590086DD89 /* placeholder-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A3C725A23FFBB580086DD89 /* placeholder-user.png */; };
 		6A3C725D23FFBB590086DD89 /* slr-camera-2-xxl.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A3C725B23FFBB590086DD89 /* slr-camera-2-xxl.png */; };
@@ -53,6 +54,7 @@
 		597FBFA023FB32F500314FF2 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		59AE9D70240DA9A000251278 /* ChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
 		59B7069223FF24DC00E510FE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		59F0B0072434F51B0089907C /* channel-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "channel-icon.png"; path = "Assets.xcassets/channel-icon.png"; sourceTree = "<group>"; };
 		6A2660B3241B7A2100415915 /* MessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewCell.swift; sourceTree = "<group>"; };
 		6A3C725A23FFBB580086DD89 /* placeholder-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "placeholder-user.png"; path = "Assets.xcassets/placeholder-user.png"; sourceTree = "<group>"; };
 		6A3C725B23FFBB590086DD89 /* slr-camera-2-xxl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "slr-camera-2-xxl.png"; path = "Assets.xcassets/slr-camera-2-xxl.png"; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		597FBF7623FB214800314FF2 = {
 			isa = PBXGroup;
 			children = (
+				59F0B0072434F51B0089907C /* channel-icon.png */,
 				5953BB49242689D9003CEF6A /* launchscreen.png */,
 				597FBF9E23FB316900314FF2 /* Debug.xcconfig */,
 				597FBFA023FB32F500314FF2 /* Release.xcconfig */,
@@ -211,6 +214,7 @@
 				5953BB4A242689D9003CEF6A /* launchscreen.png in Resources */,
 				6A3C725C23FFBB590086DD89 /* placeholder-user.png in Resources */,
 				597FBF8A23FB214900314FF2 /* Main.storyboard in Resources */,
+				59F0B0082434F51B0089907C /* channel-icon.png in Resources */,
 				597DD5CC242FBBCD005D97C9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
