@@ -27,13 +27,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var channelsArray : [Channel] = []
     var onlineChannelsArray: [Channel] = []
     var historyChannelsArray: [Channel] = []
+    var sortedOnlineChannelsArray: [Channel] = []
+    var sortedHistoryChannelsArray: [Channel] = []
     
     let app = UIApplication.shared.delegate as! AppDelegate
     private lazy var reference = app.db.collection("channels")
     
-    func getSortedChannelsArrays(source: [Channel]){
-        onlineChannelsArray = []
-        historyChannelsArray = []
+    private func getSortedChannelsArrays(source: [Channel]){
         source.forEach { channel in
             if channel.lastActivity != nil {
                 if channel.lastActivity! > Date().addingTimeInterval(-600) {
@@ -45,10 +45,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 historyChannelsArray.append(channel)
             }
         }
+        sortedOnlineChannelsArray = sortChannels(source: onlineChannelsArray)
+        sortedHistoryChannelsArray = sortChannels(source: historyChannelsArray)
     }
     
     private func getChannels(){
-        channelsArray = []
+        clearChannels()
         spinner.showActivityIndicator(uiView: self.view)
         DispatchQueue.main.async {
             self.reference.addSnapshotListener { snapshot, error in
@@ -57,14 +59,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     let name = data.data()["name"] as? String
                     let lastMessage = data.data()["lastMessage"] as? String
                     let lastActivity = data.data()["lastActivity"] as? Timestamp
-                    //                print("\(identifier ?? "id"), \(name ?? "Untitled"), \(lastMessage ?? "No messages"), \(lastActivity)")
+//                    print("\(identifier ), \(name ?? "Untitled"), \(lastMessage ?? "No messages")")
                     self.channelsArray.append(Channel(identifier: identifier, name: name, lastMessage: lastMessage, lastActivity: lastActivity?.dateValue()))
                 }
                 self.getSortedChannelsArrays(source: self.channelsArray)
+                print("self.channelsTableView.reloadData()")
                 self.channelsTableView.reloadData()
             }
             self.spinner.hideActivityIndicator(uiView: self.view)
         }
+    }
+    
+    private func sortChannels(source: [Channel]) -> [Channel]{
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let defaultDate = dateFormatter.date(from: "01-02-2000")
+//        print(defaultDate!)
+        let result = source.sorted(by: { ($0.lastActivity ?? defaultDate!)?.compare($1.lastActivity ?? defaultDate!) == .orderedDescending})
+        return result
+    }
+    
+    private func clearChannels() {
+        channelsArray.removeAll()
+        onlineChannelsArray.removeAll()
+        historyChannelsArray.removeAll()
+        sortedOnlineChannelsArray.removeAll()
+        sortedHistoryChannelsArray.removeAll()
     }
     
     private func showAlertToAddChannel() {
@@ -93,9 +114,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
-            return onlineChannelsArray.count
+            return sortedOnlineChannelsArray.count
         } else {
-            return historyChannelsArray.count
+            return sortedHistoryChannelsArray.count
         }
     }
     
@@ -113,11 +134,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as! ChannelViewCell
-            cell.configure(with: onlineChannelsArray[indexPath.row])
+            cell.configure(with: sortedOnlineChannelsArray[indexPath.row])
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as! ChannelViewCell
-            cell.configure(with: historyChannelsArray[indexPath.row])
+            cell.configure(with: sortedHistoryChannelsArray[indexPath.row])
             return cell
         }
     }
@@ -130,23 +151,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         switch indexPath.section {
         case 0:
-            let name = onlineChannelsArray[indexPath.row].name
+            let name = sortedOnlineChannelsArray[indexPath.row].name
             vc.title = name
-            vc.channel = onlineChannelsArray[indexPath.row]
+            vc.channel = sortedOnlineChannelsArray[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
-            print(onlineChannelsArray[indexPath.row].lastActivity ?? "no date")
-            print(Date())
-            print(Date().addingTimeInterval(-600))
-            print(onlineChannelsArray[indexPath.row].identifier ?? "no id")
+//            print(onlineChannelsArray[indexPath.row].lastActivity ?? "no date")
+//            print(Date())
+//            print(Date().addingTimeInterval(-600))
+//            print(onlineChannelsArray[indexPath.row].identifier ?? "no id")
         case 1:
-            let name = historyChannelsArray[indexPath.row].name
+            let name = sortedHistoryChannelsArray[indexPath.row].name
             vc.title = name
-            vc.channel = historyChannelsArray[indexPath.row]
+            vc.channel = sortedHistoryChannelsArray[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
-            print(historyChannelsArray[indexPath.row].lastActivity ?? "no date")
-            print(Date())
-            print(Date().addingTimeInterval(-600))
-            print(historyChannelsArray[indexPath.row].identifier ?? "no id")
+//            print(historyChannelsArray[indexPath.row].lastActivity ?? "no date")
+//            print(Date())
+//            print(Date().addingTimeInterval(-600))
+//            print(historyChannelsArray[indexPath.row].identifier ?? "no id")
         default:
             print("Error")
         }
@@ -167,17 +188,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-           if let destination = segue.destination as? ProfileViewController {
-               destination.delegate = self
-           }
-       }
-       
-       func passInfo() {
+        if let destination = segue.destination as? ProfileViewController {
+            destination.delegate = self
+        }
+        if let destination = segue.destination as? ChannelViewController {
+            destination.delegate = self
+        }
+    }
+    
+    func passInfo() {
         if let image = GCDDataManager().getSavedPicture(named: "profilePicture") {
             profileButton.setImage(image, for: .normal)
         }
         self.profileName.text = GCDDataManager().getSavedText(named: "name")
-       }
+    }
+    
+    func initReload() {
+        getChannels()
+        print("OLOLO")
+    }
 }
 
 // MARK: Extension which make image rounded

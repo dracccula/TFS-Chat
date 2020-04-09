@@ -30,9 +30,16 @@ class MessageViewCell: UITableViewCell, ConfigurableView {
         } else {
             dateLabel.text = ""
         }
-        messageView.backgroundColor = UIColor.systemBlue
-        leading.isActive = false
-        trailing.isActive = true
+        switch model.senderId == "VK" {
+        case true:
+            messageView.backgroundColor = UIColor.systemBlue
+            leading.isActive = false
+            trailing.isActive = true
+        case false:
+            messageView.backgroundColor = .lightGray
+            leading.isActive = true
+            trailing.isActive = false
+        }
         
 //        if model.isIncoming {
 //            messageView.backgroundColor = .lightGray

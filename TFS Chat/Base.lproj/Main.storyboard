@@ -155,14 +155,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="messageCell" id="YDl-kc-m3H" customClass="MessageViewCell" customModule="Tinkoff_Chat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="431"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="435"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YDl-kc-m3H" id="uOE-wR-u7G">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="435"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLz-ob-Zb6" userLabel="messageCell" customClass="MessageViewCell" customModule="Tinkoff_Chat" customModuleProvider="target">
-                                                    <rect key="frame" x="72" y="4" width="240" height="423"/>
+                                                    <rect key="frame" x="80" y="4" width="232" height="427"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEE-GO-vHv" userLabel="Sender name">
                                                             <rect key="frame" x="8" y="8" width="79" height="21.5"/>
@@ -171,14 +171,14 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQK-xe-0dB" userLabel="Message">
-                                                            <rect key="frame" x="8" y="33.5" width="224" height="365.5"/>
+                                                            <rect key="frame" x="8" y="33.5" width="216" height="365.5"/>
                                                             <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices lacinia urna, eget tincidunt ligula scelerisque sed. Duis facilisis bibendum mauris non posuere. Suspendisse potenti. Vivamus cursus pellentesque orci, id gravida sapien sagittis eget. Integer erat ligula, consequat in condimentum quis, ornare ac quam. Mauris metus est, sagittis ac commodo ac, volutpat a dui. Aenean est arcu, vestibulum fringilla malesuada sit amet, mollis in metus.</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="04:20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMu-cJ-9oh" userLabel="Date">
-                                                            <rect key="frame" x="195.5" y="399" width="36.5" height="16"/>
+                                                            <rect key="frame" x="188" y="403" width="36" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -193,8 +193,9 @@
                                                         <constraint firstItem="SQK-xe-0dB" firstAttribute="leading" secondItem="aLz-ob-Zb6" secondAttribute="leading" constant="8" id="P0N-L2-18d"/>
                                                         <constraint firstAttribute="trailing" secondItem="oMu-cJ-9oh" secondAttribute="trailing" constant="8" id="Q9C-Ii-xWT"/>
                                                         <constraint firstItem="oMu-cJ-9oh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aLz-ob-Zb6" secondAttribute="leading" constant="8" id="X6v-ZZ-1C5"/>
+                                                        <constraint firstItem="SQK-xe-0dB" firstAttribute="width" relation="lessThanOrEqual" secondItem="aLz-ob-Zb6" secondAttribute="width" multiplier="0.5" constant="100" id="jl1-ls-VHc"/>
                                                         <constraint firstItem="SQK-xe-0dB" firstAttribute="top" secondItem="sEE-GO-vHv" secondAttribute="bottom" constant="4" id="kL0-v5-VXs"/>
-                                                        <constraint firstItem="oMu-cJ-9oh" firstAttribute="top" secondItem="SQK-xe-0dB" secondAttribute="bottom" id="kZv-fw-Ddq"/>
+                                                        <constraint firstItem="oMu-cJ-9oh" firstAttribute="top" secondItem="SQK-xe-0dB" secondAttribute="bottom" constant="4" id="kZv-fw-Ddq"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -210,9 +211,6 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstItem="aLz-ob-Zb6" firstAttribute="width" relation="lessThanOrEqual" secondItem="YDl-kc-m3H" secondAttribute="width" multiplier="0.75" priority="900" id="IlB-09-b7q"/>
-                                        </constraints>
                                         <connections>
                                             <outlet property="dateLabel" destination="oMu-cJ-9oh" id="YgB-6J-bbP"/>
                                             <outlet property="leading" destination="yYa-AN-JvO" id="tfz-lG-rj5"/>

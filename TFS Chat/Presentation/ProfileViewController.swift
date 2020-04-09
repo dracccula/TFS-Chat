@@ -319,6 +319,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 
 protocol InfoDataDelegate {
     func passInfo()
+    func initReload()
 }
 
 // MARK: Extension which make image rounded
