@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var channelsTableView: UITableView!
-    private let spinner = SpinnerUtils()
+    private let spinner = Spinner()
     enum TableSection: Int {
         case online, offline
     }
@@ -30,13 +30,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var sortedOnlineChannelsArray: [Channel] = []
     var sortedHistoryChannelsArray: [Channel] = []
     
-    let app = UIApplication.shared.delegate as! AppDelegate
-    private lazy var reference = app.db.collection("channels")
-    
     private func getSortedChannelsArrays(source: [Channel]){
         source.forEach { channel in
             if channel.lastActivity != nil {
-                if channel.lastActivity! > Date().addingTimeInterval(-600) {
+                if channel.lastActivity! > Date().addingTimeInterval(Constants.lastActivityInterval) {
                     onlineChannelsArray.append(channel)
                 } else {
                     historyChannelsArray.append(channel)
@@ -49,63 +46,74 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         sortedHistoryChannelsArray = sortChannels(source: historyChannelsArray)
     }
     
-    private func getChannels(){
-        clearChannels()
-        spinner.showActivityIndicator(uiView: self.view)
-        DispatchQueue.main.async {
-            self.reference.addSnapshotListener { snapshot, error in
-                snapshot!.documents.forEach { data in
-                    let identifier = data.documentID
-                    let name = data.data()["name"] as? String
-                    let lastMessage = data.data()["lastMessage"] as? String
-                    let lastActivity = data.data()["lastActivity"] as? Timestamp
-//                    print("\(identifier ), \(name ?? "Untitled"), \(lastMessage ?? "No messages")")
-                    self.channelsArray.append(Channel(identifier: identifier, name: name, lastMessage: lastMessage, lastActivity: lastActivity?.dateValue()))
-                }
-                self.getSortedChannelsArrays(source: self.channelsArray)
-                print("self.channelsTableView.reloadData()")
-                self.channelsTableView.reloadData()
+    private func getChannels() {
+        FirebaseService().channels.addSnapshotListener { snapshot, error in
+            self.spinner.showActivityIndicator(uiView: self.view)
+            self.clearChannels(exceptСhannelsArray: false)
+            snapshot!.documents.forEach { data in
+                let identifier = data.documentID
+                let name = data.data()["name"] as? String
+                let lastMessage = data.data()["lastMessage"] as? String
+                let lastActivity = data.data()["lastActivity"] as? Timestamp
+                self.channelsArray.append(Channel(identifier: identifier, name: name, lastMessage: lastMessage, lastActivity: lastActivity?.dateValue()))
             }
+            self.getSortedChannelsArrays(source: self.channelsArray)
+            print("self.channelsTableView.reloadData()")
+            self.channelsTableView.reloadData()
             self.spinner.hideActivityIndicator(uiView: self.view)
         }
     }
+    
     
     private func sortChannels(source: [Channel]) -> [Channel]{
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale.current
         dateFormatter.dateFormat = "MM-dd-yyyy"
         let defaultDate = dateFormatter.date(from: "01-02-2000")
-//        print(defaultDate!)
         let result = source.sorted(by: { ($0.lastActivity ?? defaultDate!)?.compare($1.lastActivity ?? defaultDate!) == .orderedDescending})
         return result
     }
     
-    private func clearChannels() {
-        channelsArray.removeAll()
-        onlineChannelsArray.removeAll()
-        historyChannelsArray.removeAll()
-        sortedOnlineChannelsArray.removeAll()
-        sortedHistoryChannelsArray.removeAll()
+    private func clearChannels(exceptСhannelsArray: Bool) {
+        switch exceptСhannelsArray {
+        case true:
+            onlineChannelsArray.removeAll()
+            historyChannelsArray.removeAll()
+            sortedOnlineChannelsArray.removeAll()
+            sortedHistoryChannelsArray.removeAll()
+        case false:
+            channelsArray.removeAll()
+            onlineChannelsArray.removeAll()
+            historyChannelsArray.removeAll()
+            sortedOnlineChannelsArray.removeAll()
+            sortedHistoryChannelsArray.removeAll()
+        }
     }
     
     private func showAlertToAddChannel() {
         let alert = UIAlertController(title: "Add new channel", message: "Enter a channel name", preferredStyle: .alert)
         alert.addTextField()
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-            let textField = alert?.textFields![0]
-            self.addChannel(channelName: textField?.text ?? "")
-        }))
+        let channelNameTextField = alert.textFields![0]
+        let okButton = UIAlertAction(title: "OK", style: .default, handler: { alert in
+            if !(channelNameTextField.text?.isEmpty)! {
+                self.addChannel(channelName: channelNameTextField.text ?? "")
+            }
+        })
+        okButton.isEnabled = false
+        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object:channelNameTextField,
+                                                      queue: OperationQueue.main) { (notification) -> Void in
+                                                        okButton.isEnabled = channelNameTextField.text != ""
+        }
+        alert.addAction(okButton)
         alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
     private func addChannel(channelName: String) {
-        DispatchQueue.main.async {
             self.spinner.showActivityIndicator(uiView: self.view)
-            self.reference.addDocument(data: Channel(identifier: nil, name: channelName, lastMessage: "", lastActivity: Date()).toDict)
+        FirebaseService().channels.addDocument(data: Channel(identifier: nil, name: channelName, lastMessage: "", lastActivity: Date()).toDict)
             self.channelsTableView.reloadData()
             self.spinner.hideActivityIndicator(uiView: self.view)
-        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -155,19 +163,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             vc.title = name
             vc.channel = sortedOnlineChannelsArray[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
-//            print(onlineChannelsArray[indexPath.row].lastActivity ?? "no date")
-//            print(Date())
-//            print(Date().addingTimeInterval(-600))
-//            print(onlineChannelsArray[indexPath.row].identifier ?? "no id")
         case 1:
             let name = sortedHistoryChannelsArray[indexPath.row].name
             vc.title = name
             vc.channel = sortedHistoryChannelsArray[indexPath.row]
             self.navigationController?.pushViewController(vc, animated: true)
-//            print(historyChannelsArray[indexPath.row].lastActivity ?? "no date")
-//            print(Date())
-//            print(Date().addingTimeInterval(-600))
-//            print(historyChannelsArray[indexPath.row].identifier ?? "no id")
         default:
             print("Error")
         }
@@ -175,6 +175,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         getChannels()
         profileButton.makeRounded()
         if let image = GCDDataManager().getSavedPicture(named: "profilePicture") {
@@ -186,12 +187,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         channelsTableView.dataSource = self
         channelsTableView.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        clearChannels(exceptСhannelsArray: true)
+        getSortedChannelsArrays(source: channelsArray)
+        channelsTableView.reloadData()
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? ProfileViewController {
-            destination.delegate = self
-        }
-        if let destination = segue.destination as? ChannelViewController {
             destination.delegate = self
         }
     }
@@ -201,11 +205,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             profileButton.setImage(image, for: .normal)
         }
         self.profileName.text = GCDDataManager().getSavedText(named: "name")
-    }
-    
-    func initReload() {
-        getChannels()
-        print("OLOLO")
     }
 }
 

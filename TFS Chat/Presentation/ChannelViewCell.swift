@@ -59,17 +59,16 @@ class ChannelViewCell: UITableViewCell {
             dateLabel.text = dateString
             if #available(iOS 13.0, *) {
                 if traitCollection.userInterfaceStyle == .light {
-                    contentView.backgroundColor = model.lastActivity! > Date().addingTimeInterval(-600) ? UIColor.init(red: 255.0/255.0, green: 255.0/255.0, blue: 190.0/255.0, alpha: 1) : .systemBackground
+                    contentView.backgroundColor = model.lastActivity! > Date().addingTimeInterval(Constants.lastActivityInterval) ? UIColor.init(red: 255.0/255.0, green: 255.0/255.0, blue: 190.0/255.0, alpha: 1) : .systemBackground
                 } else {
-                    contentView.backgroundColor = model.lastActivity! > Date().addingTimeInterval(-600) ? UIColor.init(red: 150.0/255.0, green: 150.0/255.0, blue: 80.0/255.0, alpha: 1) : .systemBackground
+                    contentView.backgroundColor = model.lastActivity! > Date().addingTimeInterval(Constants.lastActivityInterval) ? UIColor.init(red: 150.0/255.0, green: 150.0/255.0, blue: 80.0/255.0, alpha: 1) : .systemBackground
                 }
             } else {
-                contentView.backgroundColor = model.lastActivity! > Date().addingTimeInterval(-600) ? UIColor.init(red: 255.0/255.0, green: 255.0/255.0, blue: 190.0/255.0, alpha: 1) : UIColor.init(named: "systemBackground")
+                contentView.backgroundColor = model.lastActivity! > Date().addingTimeInterval(Constants.lastActivityInterval) ? UIColor.init(red: 255.0/255.0, green: 255.0/255.0, blue: 190.0/255.0, alpha: 1) : UIColor.init(named: "systemBackground")
             }
         } else {
             dateLabel.text = ""
         }
-//        model.hasUnreadMessages ? messageLabel.font = UIFont.boldSystemFont(ofSize: 17.0) : ()
     }
 
 }

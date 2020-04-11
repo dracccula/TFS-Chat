@@ -55,7 +55,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     var loadedProfileData: ProfileData = ProfileData()
     
     var delegate: InfoDataDelegate?
-    private let spinner = SpinnerUtils()
+    private let spinner = Spinner()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,16 +170,16 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    // MARK: Enable button function
-    private func setEnableButton(button: UIButton, enable: Bool) {
-        if enable {
-            button.isEnabled = true
-            button.alpha = 1
-        } else {
-            button.isEnabled = false
-            button.alpha = 0.5
-        }
-    }
+//    // MARK: Enable button function
+//    func setEnableButton(button: UIButton, enable: Bool) {
+//        if enable {
+//            button.isEnabled = true
+//            button.alpha = 1
+//        } else {
+//            button.isEnabled = false
+//            button.alpha = 0.5
+//        }
+//    }
     
     
     // MARK: Profile data change check
@@ -188,13 +188,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             aboutTextView.text == (loadedProfileData.about ?? "") &&
             !isUserPictureChanged
         {
-            self.setEnableButton(button: saveButton, enable: false)
-            self.setEnableButton(button: gcdButton, enable: false)
-            self.setEnableButton(button: operationButton, enable: false)
+            Utilities().setEnableButton(button: saveButton, enable: false)
+            Utilities().setEnableButton(button: gcdButton, enable: false)
+            Utilities().setEnableButton(button: operationButton, enable: false)
         } else {
-            self.setEnableButton(button: saveButton, enable: true)
-            self.setEnableButton(button: gcdButton, enable: true)
-            self.setEnableButton(button: operationButton, enable: true)
+            Utilities().setEnableButton(button: saveButton, enable: true)
+            Utilities().setEnableButton(button: gcdButton, enable: true)
+            Utilities().setEnableButton(button: operationButton, enable: true)
         }
     }
     
@@ -285,15 +285,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         cancelButton.isHidden = false
         saveButton.isHidden = false
         changeProfileImageButton.isHidden = false
+        // TODO: Make enable/disable textview function
         nameTextView.isEditable = true
-        nameTextView.layer.borderColor = UIColor.lightGray.cgColor
-        nameTextView.layer.borderWidth = 1.0
-        nameTextView.layer.cornerRadius = 5
+        Utilities().drawBorder(textView: nameTextView)
         nameTextView.delegate = self
         aboutTextView.isEditable = true
-        aboutTextView.layer.borderColor = UIColor.lightGray.cgColor
-        aboutTextView.layer.borderWidth = 1.0
-        aboutTextView.layer.cornerRadius = 5
+        Utilities().drawBorder(textView: aboutTextView)
         aboutTextView.delegate = self
         editProfileButton.isHidden = true
 //        gcdButton.isHidden = false
@@ -319,7 +316,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 
 protocol InfoDataDelegate {
     func passInfo()
-    func initReload()
 }
 
 // MARK: Extension which make image rounded

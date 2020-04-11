@@ -7,13 +7,6 @@
 //
 import Foundation
 
-struct MessageCellModel {
-    let id: Int
-    let message: String
-    let date: Date
-    let isIncoming: Bool
-}
-
 struct Channel {
     let identifier: String?
     let name: String?

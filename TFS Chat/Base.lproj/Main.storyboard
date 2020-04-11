@@ -49,7 +49,7 @@
                                     <constraint firstAttribute="bottom" secondItem="zsl-K9-6TB" secondAttribute="bottom" constant="16" id="ja2-xJ-zM5"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MAP-0c-a9x">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MAP-0c-a9x">
                                 <rect key="frame" x="0.0" y="116" width="320" height="452"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="channelCell" id="Jlb-2D-xSI" customClass="ChannelViewCell" customModule="Tinkoff_Chat" customModuleProvider="target">
@@ -177,8 +177,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="04:20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMu-cJ-9oh" userLabel="Date">
-                                                            <rect key="frame" x="188" y="403" width="36" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="04:20" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMu-cJ-9oh" userLabel="Date">
+                                                            <rect key="frame" x="187.5" y="403" width="36.5" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -225,11 +225,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iW2-v7-ALL" userLabel="Message Input View">
                                 <rect key="frame" x="0.0" y="526" width="320" height="42"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kvg-xj-AdC">
-                                        <rect key="frame" x="8" y="4" width="254" height="34"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nc2-kd-kVn">
+                                        <rect key="frame" x="8" y="4" width="253" height="34"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2Z-ne-250">
                                         <rect key="frame" x="270" y="4" width="42" height="34"/>
                                         <state key="normal" title="Send">
@@ -242,12 +244,12 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="B2Z-ne-250" firstAttribute="leading" secondItem="Kvg-xj-AdC" secondAttribute="trailing" constant="8" id="3Za-0e-uw1"/>
                                     <constraint firstItem="B2Z-ne-250" firstAttribute="top" secondItem="iW2-v7-ALL" secondAttribute="top" constant="4" id="3lz-5b-pWc"/>
                                     <constraint firstAttribute="bottom" secondItem="B2Z-ne-250" secondAttribute="bottom" constant="4" id="8gg-8w-dim"/>
-                                    <constraint firstAttribute="bottom" secondItem="Kvg-xj-AdC" secondAttribute="bottom" constant="4" id="jrx-iR-tou"/>
-                                    <constraint firstItem="Kvg-xj-AdC" firstAttribute="leading" secondItem="iW2-v7-ALL" secondAttribute="leading" constant="8" id="rWE-HS-WLG"/>
-                                    <constraint firstItem="Kvg-xj-AdC" firstAttribute="top" secondItem="iW2-v7-ALL" secondAttribute="top" constant="4" id="vib-rA-chV"/>
+                                    <constraint firstItem="Nc2-kd-kVn" firstAttribute="leading" secondItem="iW2-v7-ALL" secondAttribute="leading" constant="8" id="A41-uh-U7M"/>
+                                    <constraint firstAttribute="bottom" secondItem="Nc2-kd-kVn" secondAttribute="bottom" constant="4" id="Kbf-gZ-0Ge"/>
+                                    <constraint firstItem="B2Z-ne-250" firstAttribute="centerX" secondItem="Nc2-kd-kVn" secondAttribute="trailing" constant="30" id="QQu-Yw-F1E"/>
+                                    <constraint firstItem="Nc2-kd-kVn" firstAttribute="top" secondItem="iW2-v7-ALL" secondAttribute="top" constant="4" id="iur-Hv-Cn2"/>
                                     <constraint firstAttribute="trailing" secondItem="B2Z-ne-250" secondAttribute="trailing" constant="8" id="x0b-XK-6GN"/>
                                 </constraints>
                             </view>
@@ -269,7 +271,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="BZf-wI-EOb"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="messageTextField" destination="Kvg-xj-AdC" id="4N0-b5-0e0"/>
+                        <outlet property="messageTextView" destination="Nc2-kd-kVn" id="fwr-1V-TEM"/>
                         <outlet property="messagesTableView" destination="eRR-yo-aLj" id="G1W-Eh-gIS"/>
                         <outlet property="sendButton" destination="B2Z-ne-250" id="EzX-gF-t8c"/>
                     </connections>
