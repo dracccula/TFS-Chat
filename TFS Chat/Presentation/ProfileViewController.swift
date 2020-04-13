@@ -54,6 +54,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     private let gcdDataManager = GCDDataManager()
     private let operationDataManager = OperationDataManager()
     var loadedProfileData: ProfileData = ProfileData()
+    @IBOutlet weak var scrollViewToBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollViewToEditButtonConstraint: NSLayoutConstraint!
     
     var delegate: InfoDataDelegate?
     private let spinner = Spinner()
@@ -298,8 +300,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         editProfileButton.isHidden = true
 //        gcdButton.isHidden = false
 //        operationButton.isHidden = false
-        let bottom = scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
-        NSLayoutConstraint.activate([bottom])
+//        let bottom = scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+//        NSLayoutConstraint.activate([bottom])
+        scrollViewToEditButtonConstraint.isActive = false
+        scrollViewToBottomConstraint.isActive = true
         self.profileDataChanged()
     }
     
@@ -316,6 +320,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         editProfileButton.isHidden = false
 //        gcdButton.isHidden = true
 //        operationButton.isHidden = true
+        scrollViewToBottomConstraint.isActive = false
+        scrollViewToEditButtonConstraint.isActive = true
     }
 }
 

@@ -512,6 +512,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="OZl-yi-psZ" firstAttribute="leading" secondItem="4PR-6c-Ksa" secondAttribute="leading" id="2fy-tF-ApG"/>
+                            <constraint firstItem="Qt0-U3-lt5" firstAttribute="bottom" secondItem="OZl-yi-psZ" secondAttribute="bottom" id="6XW-ft-kTP"/>
                             <constraint firstItem="Qt0-U3-lt5" firstAttribute="trailing" secondItem="QMq-T4-i1g" secondAttribute="trailing" constant="16" id="94N-wX-j63"/>
                             <constraint firstItem="Sho-Tf-I5Q" firstAttribute="leading" secondItem="Qt0-U3-lt5" secondAttribute="leading" constant="16" id="B4N-ef-IPV"/>
                             <constraint firstItem="Qt0-U3-lt5" firstAttribute="trailing" secondItem="4PR-6c-Ksa" secondAttribute="trailing" id="BmS-UL-Vj9"/>
@@ -530,6 +531,11 @@
                             <constraint firstItem="OZl-yi-psZ" firstAttribute="trailing" secondItem="Qt0-U3-lt5" secondAttribute="trailing" id="zNr-iE-biR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qt0-U3-lt5"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="6XW-ft-kTP"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="1HO-Yh-V32"/>
                     <connections>
@@ -544,6 +550,8 @@
                         <outlet property="profilePicture" destination="mbi-wh-4Fm" id="akY-hm-3DO"/>
                         <outlet property="saveButton" destination="lrP-P6-O4o" id="UGA-fS-U05"/>
                         <outlet property="scrollView" destination="OZl-yi-psZ" id="t5k-FS-N0h"/>
+                        <outlet property="scrollViewToBottomConstraint" destination="6XW-ft-kTP" id="PBd-58-4pw"/>
+                        <outlet property="scrollViewToEditButtonConstraint" destination="zFo-mB-FC6" id="CRK-rA-3oa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HX9-cn-bGY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
