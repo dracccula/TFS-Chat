@@ -11,6 +11,7 @@ import UIKit
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIApplicationDelegate, UITextViewDelegate {
     
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var profilePicture: UIImageView!
     let imagePicker = UIImagePickerController()
     @IBAction func changeProfileImageButtonAction(_ sender: UIButton)
@@ -79,7 +80,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @objc func keyboardWillShow(sender: NSNotification) {
-        self.view.frame.origin.y = -250
+        if let keyboardRect = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.view.frame.origin.y = -keyboardRect.height
+        }
     }
     
     @objc func keyboardWillHide(sender: NSNotification) {
@@ -295,6 +298,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         editProfileButton.isHidden = true
 //        gcdButton.isHidden = false
 //        operationButton.isHidden = false
+        let bottom = scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+        NSLayoutConstraint.activate([bottom])
         self.profileDataChanged()
     }
     

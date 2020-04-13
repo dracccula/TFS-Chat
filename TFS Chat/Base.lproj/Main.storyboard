@@ -543,6 +543,7 @@
                         <outlet property="operationButton" destination="MCa-JT-EPY" id="rDB-Rs-miE"/>
                         <outlet property="profilePicture" destination="mbi-wh-4Fm" id="akY-hm-3DO"/>
                         <outlet property="saveButton" destination="lrP-P6-O4o" id="UGA-fS-U05"/>
+                        <outlet property="scrollView" destination="OZl-yi-psZ" id="t5k-FS-N0h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HX9-cn-bGY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

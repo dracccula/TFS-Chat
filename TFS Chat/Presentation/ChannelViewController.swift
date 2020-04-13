@@ -89,10 +89,25 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
         messageTextView.delegate = self
         Utilities().setEnableButton(button: sendButton, enable: false)
         Utilities().drawBorder(textView: messageTextView)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         messagesTableView.reloadData()
+    }
+    
+    @objc func keyboardWillShow(sender: NSNotification) {
+        if let keyboardRect = (sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.view.frame.origin.y = -keyboardRect.height
+        }
+    }
+    
+    @objc func keyboardWillHide(sender: NSNotification) {
+        self.view.frame.origin.y = 0
+        self.view.setNeedsLayout()
     }
     
     func textViewDidChange(_ textView: UITextView) {

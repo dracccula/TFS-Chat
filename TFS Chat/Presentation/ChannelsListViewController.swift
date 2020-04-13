@@ -50,7 +50,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         FirebaseService().channels.addSnapshotListener { snapshot, error in
             self.spinner.showActivityIndicator(uiView: self.view)
             self.clearChannels(exceptСhannelsArray: false)
-            snapshot!.documents.forEach { data in
+            snapshot?.documents.forEach { data in
                 let identifier = data.documentID
                 let name = data.data()["name"] as? String
                 let lastMessage = data.data()["lastMessage"] as? String
