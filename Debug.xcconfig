@@ -1,5 +1,5 @@
 //
-//  Development.xcconfig
+//  DEBUG.xcconfig
 //  TFS PROJECT
 //
 //  Created by Vladislav Kireev on 17.02.2020.
@@ -10,6 +10,7 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 
 // App Settings
-APP_NAME = TFS PROJECT (DEBUG)
-APP_BUNDLE_ID = VK.TFS-PROJECT.DEBUG
-PRODUCT_BUNDLE_IDENTIFIER = VK.TFS-PROJECT.DEBUG
+APP_NAME = TFS Chat (DEBUG)
+APP_BUNDLE_ID = ru.tcsbank.TinkoffChat.DEBUG
+PRODUCT_BUNDLE_IDENTIFIER = ru.tcsbank.TinkoffChat.DEBUG
+#include "Pods/Target Support Files/Pods-TFS Chat/Pods-TFS Chat.debug.xcconfig"

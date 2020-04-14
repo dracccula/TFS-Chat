@@ -26,8 +26,6 @@ class GCDDataManager: ProfileDataManager {
             if let image = self.getSavedPicture(named: self.profilePictureFileName) {
                 profileData.picture = image
             }
-            
-            sleep(1)
             DispatchQueue.main.async {
                 completion(profileData)
             }
@@ -38,8 +36,6 @@ class GCDDataManager: ProfileDataManager {
     
     func saveProfileData (profileData: ProfileData, onError: @escaping () -> Void, completion: @escaping () -> Void) {
         DispatchQueue.global().async {
-            sleep(1)
-            
             var saveClosures: [() -> Bool] = []
             
             if let name = profileData.name {

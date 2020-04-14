@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1130"
+   LastUpgradeVersion = "1140"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,15 +15,15 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "597FBF7E23FB214800314FF2"
-               BuildableName = "TFS PROJECT.app"
-               BlueprintName = "TFS PROJECT"
-               ReferencedContainer = "container:TFS PROJECT.xcodeproj">
+               BuildableName = "Tinkoff Chat.app"
+               BlueprintName = "TFS Chat"
+               ReferencedContainer = "container:TFS Chat.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
@@ -31,9 +31,9 @@
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
-      selectedDebuggerIdentifier = ""
-      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "597FBF7E23FB214800314FF2"
-            BuildableName = "TFS PROJECT.app"
-            BlueprintName = "TFS PROJECT"
-            ReferencedContainer = "container:TFS PROJECT.xcodeproj">
+            BuildableName = "Tinkoff Chat.app"
+            BlueprintName = "TFS Chat"
+            ReferencedContainer = "container:TFS Chat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,14 +62,14 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "597FBF7E23FB214800314FF2"
-            BuildableName = "TFS PROJECT.app"
-            BlueprintName = "TFS PROJECT"
-            ReferencedContainer = "container:TFS PROJECT.xcodeproj">
+            BuildableName = "Tinkoff Chat.app"
+            BlueprintName = "TFS Chat"
+            ReferencedContainer = "container:TFS Chat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Release">
+      buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"

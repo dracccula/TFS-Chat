@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SpinnerUtils {
+class Spinner {
     var container: UIView = UIView()
     var loadingView: UIView = UIView()
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()

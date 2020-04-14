@@ -6,3 +6,9 @@ build/
 DerivedData/
 xcuserdata/
 .DS_Store
+Pods/
+TFS Chat/GoogleService-Info.plist
+TFS Chat.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+TFS Chat.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+TFS Chat.xcworkspace/contents.xcworkspacedata
+Podfile.lock

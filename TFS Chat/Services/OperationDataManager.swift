@@ -22,7 +22,6 @@ class SaveTextOperation: SaveOperation {
     }
     
     override func main() {
-        sleep(1)
         self.isSaved = saveText(named: fileName, text: text)
     }
     
@@ -49,7 +48,6 @@ class SaveImageOperation: SaveOperation {
     }
     
     override func main() {
-        sleep(1)
         self.isSaved = saveImage(named: fileName, image: image)
     }
     
