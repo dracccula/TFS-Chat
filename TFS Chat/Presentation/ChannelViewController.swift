@@ -14,14 +14,13 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var sendButton: UIButton!
     @IBAction func sendButtonAction(_ sender: Any) {
-        sendMessage()
+        sendMessage(channel: channel!, messageText: messageTextView.text)
     }
     
     var channel: Channel?
     private let spinner = Spinner()
     
-    
-    var messagesArray : [Message] = []
+    var firebase : FirebaseService = FirebaseService()
     var sortedMessagesArray : [Message] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,37 +47,21 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     private func getMessages() {
-        FirebaseService().messages(channel: channel!).addSnapshotListener { (snapshot, error) in
-                self.spinner.showActivityIndicator(uiView: self.view)
-                self.messagesArray.removeAll()
-                self.sortedMessagesArray.removeAll()
-                snapshot?.documents.forEach { data in
-                    let senderID = data.data()["senderID"] as? String
-                    let senderName = data.data()["senderName"] as? String
-                    let content = data.data()["content"] as? String
-                    let created = data.data()["created"] as? Timestamp
-                    self.messagesArray.append(Message(senderId: senderID, senderName: senderName, content: content, created: created?.dateValue()))
-                }
-                self.sortedMessagesArray = self.sortMessages(source: self.messagesArray)
-                self.messagesTableView.reloadData()
-                print("self.messagesTableView.reloadData()")
-                self.spinner.hideActivityIndicator(uiView: self.view)
-                self.scrollToBottom()
-            }
+        firebase.getMessages(channel: channel!) { (messagesArray) in
+            self.spinner.showActivityIndicator(uiView: self.view)
+            self.sortedMessagesArray = messagesArray
+            self.messagesTableView.reloadData()
+            self.spinner.hideActivityIndicator(uiView: self.view)
+            self.scrollToBottom()
+        }
     }
     
-    private func sortMessages(source: [Message]) -> [Message] {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.current
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        let defaultDate = dateFormatter.date(from: "01-02-2000")
-        let result = source.sorted(by: { ($0.created ?? defaultDate!)?.compare($1.created ?? defaultDate!) == .orderedAscending})
-        return result
-    }
+
     
-    private func sendMessage() {
-        FirebaseService().messages(channel: channel!).addDocument(data: Message(senderId: "VK", senderName: "VK", content: messageTextView.text, created: Date()).toDict)
-        messageTextView.text = nil
+    private func sendMessage(channel: Channel, messageText: String) {
+        firebase.sendMessage(channel: channel, messageText: messageText) {
+        }
+        self.messageTextView.text = nil
     }
     
     override func viewDidLoad() {
